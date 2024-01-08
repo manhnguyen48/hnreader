@@ -16,7 +16,10 @@
 		'forest',
 		'aqua',
 		'winter',
-		'sunset'
+		'sunset', 
+		'cmyk', 
+		'pastel', 
+		'synthwave'
 	];
 	const storedTheme = localStorage.getItem('theme')
 	let theme: Writable<string> = writable(storedTheme ||'light');
