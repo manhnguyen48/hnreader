@@ -18,9 +18,11 @@
 		'winter',
 		'sunset'
 	];
-	let theme: Writable<string> = writable('light');
+	const storedTheme = localStorage.getItem('theme')
+	let theme: Writable<string> = writable(storedTheme ||'light');
 	onMount(() => {
 		theme.subscribe((value) => {
+			localStorage.setItem('theme', value)
 			document.body.setAttribute('data-theme', value);
 		});
 	});
