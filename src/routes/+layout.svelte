@@ -66,19 +66,20 @@
 </div>
 <!-- Reverse the order so nav bar at bottom on mobile -->
 <div class="w-full flex flex-col md:flex-col-reverse">
-	<div
+	<ul
 		role="tablist"
-		class="tabs tabs-boxed order-2 md:order-1 justify-even md:justify-center sticky bottom-0 md:top-0 bg-base-200 z-[1]"
+		class="menu menu-horizontal order-2 md:order-1 justify-even md:justify-center sticky bottom-0 md:top-0 bg-base-200 z-[1]"
 	>
 		{#each feeds as feedName}
-			<a
+			<li>
+				<a
 				href="/{feedName}"
-				role="tab"
-				class="tab {$page.url.pathname === `/${feedName}` ? 'tab-active' : ''}"
+				class="{$page.url.pathname === `/${feedName}` ? 'active' : ''}"
 			>
 				<span class="capitalize">{feedName}</span>
 			</a>
+			</li>
 		{/each}
-	</div>
+		</ul>
 	<slot class="order-1 md:order-2 overflow-auto" />
 </div>
