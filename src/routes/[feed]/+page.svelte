@@ -45,7 +45,7 @@
 		<img src={happyCat} alt="happy cat" width="20%" height="20%"/>
 	</div>
 {:else}
-	<div class="grid sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-7 gap-2 m-2 md:m-4">
+	<div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-2 m-2 md:m-4">
 		{#each posts as post}
 			<Post {post} />
 		{/each}

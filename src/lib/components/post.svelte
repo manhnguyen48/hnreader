@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {PostData} from '$lib/types'
+	import type { PostData } from '$lib/types';
 	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
 	import clockIcon from '$lib/assets/clock-icon.svg?raw';
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
@@ -29,7 +29,9 @@
 	}
 </script>
 
-<div class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral">
+<div
+	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral"
+>
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"

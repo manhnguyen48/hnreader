@@ -53,7 +53,7 @@
 						<input
 							type="radio"
 							name="theme-dropdown"
-							class="theme-controller btn btn-sm btn-block btn-ghost justify-start capitalize"
+							class="theme-controller btn btn-sm btn-block btn-ghost justify-center capitalize"
 							aria-label={themeName}
 							value={themeName}
 							bind:group={$theme}
