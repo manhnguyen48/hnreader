@@ -68,7 +68,7 @@
 <div class="w-full flex flex-col md:flex-col-reverse">
 	<ul
 		role="tablist"
-		class="menu menu-horizontal order-2 md:order-1 justify-even md:justify-center sticky bottom-0 md:top-0 bg-base-200 z-[1]"
+		class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 bg-base-200 z-[1]"
 	>
 		{#each feeds as feedName}
 			<li>
