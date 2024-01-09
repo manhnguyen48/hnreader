@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Post from '$lib/components/post.svelte';
 	import happyCat from '$lib/assets/cat-cute.gif';
+	import scrollToTopIcon from '$lib/assets/scroll-top-icon.svg?raw'
 	import type { PostData } from '$lib/types';
 	export let data: { ids: number[] };
 	let ids: number[];
@@ -9,14 +10,18 @@
 	let currentItems = 50;
 	let isLoadingFeed = false;
 	let isLoadingMore = false;
-	const fetchPost = async(id: number): Promise<PostData> => {
+	let showButton = false;
+	const fetchPost = async (id: number): Promise<PostData> => {
 		const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`, {
 			cache: 'force-cache',
-			headers: { 'cache-control': 'public, max-age=3600', 'content-type': 'application/json' }
+			headers: {
+				'cache-control': 'public, max-age=3600, must-revalidate',
+				'content-type': 'application/json'
+			}
 		});
 		const post: PostData = await response.json();
 		return post;
-	}
+	};
 	const loadPosts = async () => {
 		isLoadingFeed = true;
 		posts = await Promise.all(ids.slice(0, currentItems).map((id) => fetchPost(id)));
@@ -31,18 +36,26 @@
 		posts = [...posts, ...newPosts];
 		isLoadingMore = false;
 	};
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
 	$: {
 		ids = data.ids;
-		currentItems = 50
+		currentItems = 50;
 		loadPosts();
 	}
-	onMount(() => loadPosts());
+	onMount(() => {
+		loadPosts();
+		window.onscroll = () => {
+			showButton = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+		};
+	});
 </script>
 
 {#if isLoadingFeed}
 	<div class="w-full h-screen flex flex-col gap-2 items-center justify-center">
 		<p class="text-4xl">Loading...</p>
-		<img src={happyCat} alt="happy cat" width="20%" height="20%"/>
+		<img src={happyCat} alt="happy cat" width="20%" height="20%" />
 	</div>
 {:else}
 	<div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-2 m-2 md:m-4">
@@ -61,4 +74,12 @@
 			</div>
 		{/if}
 	</div>
+	<button
+		class="btn btn-square fixed bottom-16 right-4 justify-center items-center"
+		aria-label="Scroll To Top"
+		on:click={scrollToTop}
+		style="display: {showButton ? 'flex' : 'none'}"
+	>
+		{@html scrollToTopIcon}
+	</button>
 {/if}

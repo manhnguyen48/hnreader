@@ -52,7 +52,7 @@
 				>
 			</div>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-			<ul tabindex="0" class="dropdown-content z-[2] shadow-2xl bg-base-300 rounded-box">
+			<ul tabindex="0" class="dropdown-content z-[2] shadow-2xl bg-base-300 rounded-box p-2">
 				{#each themes as themeName}
 					<li>
 						<input
@@ -72,7 +72,6 @@
 <!-- Reverse the order so nav bar at bottom on mobile -->
 <div class="w-full flex flex-col md:flex-col-reverse">
 	<ul
-		role="tablist"
 		class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 bg-base-200 z-[1]"
 	>
 		{#each feeds as feedName}
