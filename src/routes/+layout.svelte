@@ -3,6 +3,9 @@
 	import { onMount } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import { page } from '$app/stores';
+	import github from '$lib/assets/github.svg?raw'
+	import linkedin from '$lib/assets/linkedin.svg?raw'
+	import twitter from '$lib/assets/twitter.svg?raw'
 
 	const feeds: string[] = ['top', 'new', 'best', 'ask', 'show', 'job'];
 	const themes: string[] = [
@@ -16,16 +19,16 @@
 		'forest',
 		'aqua',
 		'winter',
-		'sunset', 
-		'cmyk', 
-		'pastel', 
+		'sunset',
+		'cmyk',
+		'pastel',
 		'synthwave'
 	];
-	const storedTheme = localStorage.getItem('theme')
-	let theme: Writable<string> = writable(storedTheme ||'light');
+	const storedTheme = localStorage.getItem('theme');
+	let theme: Writable<string> = writable(storedTheme || 'light');
 	onMount(() => {
 		theme.subscribe((value) => {
-			localStorage.setItem('theme', value)
+			localStorage.setItem('theme', value);
 			document.body.setAttribute('data-theme', value);
 		});
 	});
@@ -76,14 +79,23 @@
 	>
 		{#each feeds as feedName}
 			<li>
-				<a
-				href="/{feedName}"
-				class="{$page.url.pathname === `/${feedName}` ? 'active' : ''}"
-			>
-				<span class="capitalize">{feedName}</span>
-			</a>
+				<a href="/{feedName}" class={$page.url.pathname === `/${feedName}` ? 'active' : ''}>
+					<span class="capitalize">{feedName}</span>
+				</a>
 			</li>
 		{/each}
-		</ul>
+	</ul>
 	<slot class="order-1 md:order-2 overflow-auto" />
 </div>
+
+<footer class="footer flex items-center justify-between bg-base-300 text-base-content p-2 h-12">
+	<p class="text-base">Made by Ethan Nguyen</p>
+	<span class="flex items-center">
+		<a href="https://github.com/manhnguyen48" target="_blank" aria-label="GitHub">
+		{@html github}</a>
+		<a href="https://www.linkedin.com/in/ethannguyen48/" target="_blank" aria-label="LinkedIn">
+		{@html linkedin}</a>
+		<a href="https://twitter.com/bananadata48" target="_blank" aria-label="Twitter">
+		{@html twitter}</a>
+	</span>
+</footer>

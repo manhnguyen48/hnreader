@@ -75,7 +75,7 @@
 		{/if}
 	</div>
 	<button
-		class="btn btn-square fixed bottom-16 right-4 justify-center items-center"
+		class="btn btn-square fixed bottom-28 right-4 justify-center items-center"
 		aria-label="Scroll To Top"
 		on:click={scrollToTop}
 		style="display: {showButton ? 'flex' : 'none'}"
