@@ -38,7 +38,7 @@
 		rel="noopener noreferrer"
 		class="hover:underline visited:text-gray-300"
 	>
-		<header class="text-sm md:text-base">{post.title}</header>
+		<header class="text-sm md:text-base font-medium">{post.title}</header>
 		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
 	<div class="flex flex-col gap-1 justify-between items-end">
@@ -50,17 +50,17 @@
 			></span
 		>
 		<div class="flex items-end justify-between text-xs gap-2">
-			<span class="flex items-center">{@html upArrow} {post.score}</span>
+			<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
 			<a
 				href="https://news.ycombinator.com/item?id={post.id}"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<span class="flex items-center">{@html messageIcon} {post.kids ? post.kids.length : 0}</span
+				<span class="flex items-center gap-0.5">{@html messageIcon} {post.kids ? post.kids.length : 0}</span
 				>
 			</a>
 
-			<span class="flex items-center">{@html clockIcon} {timeDifference(post.time)}</span>
+			<span class="flex items-center gap-0.5">{@html clockIcon} {timeDifference(post.time)}</span>
 		</div>
 	</div>
 </div>
