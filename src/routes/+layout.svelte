@@ -20,8 +20,7 @@
 		'pastel',
 		'black', 
 	];
-	const storedTheme = localStorage.getItem('theme');
-	let theme: Writable<string> = writable(storedTheme || 'light');
+	let theme: Writable<string> = writable('forest');
 	onMount(() => {
 		theme.subscribe((value) => {
 			localStorage.setItem('theme', value);
