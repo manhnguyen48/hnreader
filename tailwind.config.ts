@@ -8,19 +8,16 @@ export default {
 		themes: [
 			'light',
 			'dark',
-			'emerald',
 			'cyberpunk',
 			'valentine',
 			'retro',
-			'garden',
 			'forest',
-			'aqua',
-			'winter',
 			'sunset',
 			'cmyk',
 			'pastel',
-			'synthwave'
+			'black', 
 		],
+		darkTheme: ['dark', 'forest', 'sunset', 'black'],
 		styled: true,
 		base: true,
 		utils: true

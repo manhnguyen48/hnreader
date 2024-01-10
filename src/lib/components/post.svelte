@@ -36,7 +36,7 @@
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="hover:underline visited:text-gray-300"
+		class="hover:underline visited:text-indigo-400"
 	>
 		<header class="text-sm md:text-base font-medium">{post.title}</header>
 		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>

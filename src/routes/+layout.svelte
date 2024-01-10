@@ -11,18 +11,14 @@
 	const themes: string[] = [
 		'light',
 		'dark',
-		'emerald',
 		'cyberpunk',
 		'valentine',
 		'retro',
-		'garden',
 		'forest',
-		'aqua',
-		'winter',
 		'sunset',
 		'cmyk',
 		'pastel',
-		'synthwave'
+		'black', 
 	];
 	const storedTheme = localStorage.getItem('theme');
 	let theme: Writable<string> = writable(storedTheme || 'light');
@@ -34,7 +30,7 @@
 	});
 </script>
 
-<div class="flex top-0 justify-between items-center h-16 p-4">
+<div class="flex top-0 justify-between items-center h-16 p-2">
 	<h1
 		class="text-4xl bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
 	>
@@ -42,7 +38,7 @@
 	</h1>
 
 	<div>
-		<div class="dropdown">
+		<div class="dropdown dropdown-bottom dropdown-end">
 			<div tabindex="0" role="button" class="btn m-1">
 				Theme
 				<svg
