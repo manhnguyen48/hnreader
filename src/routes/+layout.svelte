@@ -30,7 +30,7 @@
 	});
 </script>
 
-<div class="flex top-0 justify-between items-center h-16 p-2">
+<div class="flex top-0 justify-between items-center h-min p-4">
 	<h1
 		class="text-4xl bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
 	>

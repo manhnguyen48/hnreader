@@ -12,7 +12,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Realtime Database and get a reference to the service
 const db = getDatabase(app);
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, setHeaders }) => {
 	const feed = params.feed + 'stories';
 	const snapshot = await get(child(ref(db), `v0/${feed}`));
 
@@ -24,6 +24,10 @@ export const load: PageServerLoad = async ({ params }) => {
 				return snapshot.val();
 			})
 		);
+		// Cache data for 5 minutes so we don't query the server too much
+		setHeaders({
+			'cache-control': 'public, max-age=120, must-revalidate'
+		})
 		return { posts };
 	} else {
 		return {
