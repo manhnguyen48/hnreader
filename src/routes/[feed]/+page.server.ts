@@ -12,6 +12,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Realtime Database and get a reference to the service
 const db = getDatabase(app);
 
+export const prerender = true; 
+
 export const load: PageServerLoad = async ({ params }) => {
 	const feed = params.feed + 'stories';
 	const snapshot = await get(child(ref(db), `v0/${feed}`));
