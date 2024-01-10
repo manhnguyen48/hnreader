@@ -2,7 +2,7 @@
 	import type { PostData } from '$lib/types';
 	import scrollToTopIcon from '$lib/assets/scroll-top-icon.svg?raw';
 	import Post from '$lib/components/post.svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import { navigating } from '$app/stores';
 	import jumboCat from '$lib/assets/jumbo-cat.gif'
 	export let data: { posts: PostData[] };
@@ -28,7 +28,7 @@
 			posts = allPosts.slice(0, 50);
 		}
 	}
-	onMount(() => {
+	afterUpdate(() => {
 		observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].intersectionRatio > 0 && !loading) {
@@ -41,6 +41,8 @@
 		if (loadMoreEl) {
 			observer.observe(loadMoreEl);
 		}
+	})
+	onMount(() => {
 		window.onscroll = () => {
 			showButton = window.scrollY > 200;
 		};
