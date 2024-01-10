@@ -42,8 +42,6 @@
 			showButton = window.scrollY > 200;
 		};
 	});
-
-	$: console.log(observer);
 	onDestroy(() => {
 		if (observer) {
 			observer.disconnect();
