@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral"
+	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral hover:bg-neutral-content hover:text-neutral"
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
