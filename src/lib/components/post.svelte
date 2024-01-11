@@ -3,7 +3,7 @@
 	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
 	import clockIcon from '$lib/assets/clock-icon.svg?raw';
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
-	
+
 	export let post: PostData;
 	function timeDifference(previous: number): string {
 		const sPerMinute: number = 60;
@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral hover:border-success"
+	class="card shadow-xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none"
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
@@ -42,13 +42,6 @@
 		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
 	<div class="flex flex-col gap-1 justify-between items-end">
-		<span class="italic text-xs"
-			><a
-				href="http://news.ycombinator.com/user?id={post.by}"
-				target="_blank"
-				rel="noopener noreferrer">by {post.by}</a
-			></span
-		>
 		<a
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
