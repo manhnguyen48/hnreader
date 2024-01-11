@@ -26,7 +26,7 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
 		);
 		// Cache data for 5 minutes so we don't query the server too much
 		setHeaders({
-			'cache-control': 'private, max-age=120, must-revalidate'
+			'cache-control': 'public, max-age=120, must-revalidate'
 		})
 		return { posts };
 	} else {

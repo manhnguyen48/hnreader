@@ -22,7 +22,7 @@
 	];
 	let theme: Writable<string>;
 	onMount(() => {
-		theme = writable(localStorage.getItem('theme') || 'forest');
+		theme = writable(localStorage.getItem('theme') || 'light');
 		theme.subscribe((value) => {
 			localStorage.setItem('theme', value);
 			document.body.setAttribute('data-theme', value);
@@ -30,16 +30,16 @@
 	});
 </script>
 
-<div class="flex top-0 justify-between items-center h-min p-4">
+<div class="flex top-0 justify-between items-center h-fit p-2">
 	<h1
-		class="text-4xl bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+		class="text-4xl font-medium mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
 	>
 		<a href="/">HackerNews</a>
 	</h1>
 
 	<div>
 		<div class="dropdown dropdown-bottom dropdown-end">
-			<div tabindex="0" role="button" class="btn m-1">
+			<div tabindex="0" role="button" class="btn m-0.5">
 				Theme
 				<svg
 					width="12px"

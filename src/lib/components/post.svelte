@@ -3,8 +3,8 @@
 	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
 	import clockIcon from '$lib/assets/clock-icon.svg?raw';
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
+	
 	export let post: PostData;
-
 	function timeDifference(previous: number): string {
 		const sPerMinute: number = 60;
 		const sPerHour: number = sPerMinute * 60;
@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral hover:bg-neutral-content hover:text-neutral"
+	class="card shadow-xl p-2 min-h-[32] flex flex-col justify-between content-around border border-solid border-neutral hover:border-success"
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
@@ -49,18 +49,18 @@
 				rel="noopener noreferrer">by {post.by}</a
 			></span
 		>
-		<div class="flex items-end justify-between text-xs gap-2">
-			<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
-			<a
-				href="https://news.ycombinator.com/item?id={post.id}"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<span class="flex items-center gap-0.5">{@html messageIcon} {post.kids ? post.kids.length : 0}</span
+		<a
+			href="https://news.ycombinator.com/item?id={post.id}"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<div class="flex items-end justify-between text-xs gap-2">
+				<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
+				<span class="flex items-center gap-0.5"
+					>{@html messageIcon} {post.kids ? post.kids.length : 0}</span
 				>
-			</a>
-
-			<span class="flex items-center gap-0.5">{@html clockIcon} {timeDifference(post.time)}</span>
-		</div>
+				<span class="flex items-center gap-0.5">{@html clockIcon} {timeDifference(post.time)}</span>
+			</div>
+		</a>
 	</div>
 </div>
