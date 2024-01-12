@@ -46,8 +46,9 @@
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
 			rel="noopener noreferrer"
+			class="hover:bg-neutral hover:text-neutral-content rounded-xl"
 		>
-			<div class="flex items-end justify-between text-xs gap-2">
+			<div class="flex items-end justify-between text-xs gap-2 px-1 py-0.5">
 				<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
 				<span class="flex items-center gap-0.5"
 					>{@html messageIcon} {post.kids ? post.kids.length : 0}</span
