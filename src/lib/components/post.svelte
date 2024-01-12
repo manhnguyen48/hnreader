@@ -36,7 +36,7 @@
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1 font-inter font-extralight"
+		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1 font-inter font-light"
 	>
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
@@ -48,7 +48,7 @@
 			rel="noopener noreferrer"
 			class="hover:bg-neutral hover:text-neutral-content rounded-md"
 		>
-			<div class="flex items-end justify-between text-xs gap-2 px-1 font-ssmono">
+			<div class="flex items-end justify-between text-xs gap-2 px-1 font-jbmono">
 				<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
 				<span class="flex items-center gap-0.5"
 					>{@html messageIcon} {post.kids ? post.kids.length : 0}</span
