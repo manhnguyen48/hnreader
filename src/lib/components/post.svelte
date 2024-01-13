@@ -3,6 +3,8 @@
 	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
 	import clockIcon from '$lib/assets/clock-icon.svg?raw';
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
+	import {scale} from 'svelte/transition'
+	import { expoInOut } from 'svelte/easing';
 
 	export let post: PostData;
 	function timeDifference(previous: number): string {
@@ -30,13 +32,14 @@
 </script>
 
 <div
-	class="card shadow-xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none"
->
+	class="card shadow-xl p-2 min-h-[32] flex flex-col gap-1 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none"
+	transition:scale={{ duration: 500, delay: 500, easing: expoInOut}}
+	>
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1 font-inter font-light"
+		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1 font-light"
 	>
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
