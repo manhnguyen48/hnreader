@@ -8,9 +8,10 @@
 	import twitter from '$lib/assets/twitter.svg?raw';
 
 	const feeds: string[] = ['top', 'best', 'new', 'ask', 'show', 'job'];
-	let theme: Writable<boolean>;
+	let theme: Writable<boolean>; // true if dark, false if light
 	onMount(() => {
-		theme = writable(Boolean(localStorage.getItem('theme')) || false);
+		const preferDarkmode = window.matchMedia && window.matchMedia('(prefer-color-scheme: dark)').matches
+		theme = writable(Boolean(localStorage.getItem('theme')) || preferDarkmode);
 		theme.subscribe((value) => {
 			localStorage.setItem('theme', String(value));
 			document.documentElement.dataset['theme'] = value ? 'forest' : 'cmyk'
