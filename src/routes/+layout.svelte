@@ -11,7 +11,11 @@
 	let theme: Writable<boolean>; // true if dark, false if light
 	onMount(() => {
 		const preferDarkmode = window.matchMedia && window.matchMedia('(prefer-color-scheme: dark)').matches
-		theme = writable(Boolean(localStorage.getItem('theme')) || preferDarkmode);
+		if ('theme' in localStorage) {
+			theme = writable(Boolean(localStorage.getItem('theme')));
+		} else { 
+			theme = writable(preferDarkmode)
+		}
 		theme.subscribe((value) => {
 			localStorage.setItem('theme', String(value));
 			document.documentElement.dataset['theme'] = value ? 'forest' : 'cmyk'
