@@ -5,6 +5,8 @@
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
 	import { scale } from 'svelte/transition';
 	import { expoInOut } from 'svelte/easing';
+	// import bookmarkIconBlank from '$lib/assets/bookmark-icon-blank.svg?raw';
+	// import bookmarkIconFilled from '$lib/assets/bookmark-icon-filled.svg?raw';
 
 	export let post: PostData;
 	function timeDifference(previous: number): string {
@@ -44,7 +46,12 @@
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
-	<div class="flex flex-col gap-1 justify-between items-end">
+	<div class="flex justify-end items-center px-1">
+		<!-- <label class="swap">
+			<input type="checkbox" name="save" id="test" bind:checked={savedPost} />
+			{@html bookmarkIconFilled}
+			{@html bookmarkIconBlank}
+		</label> -->
 		<a
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
