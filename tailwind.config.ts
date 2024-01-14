@@ -10,8 +10,8 @@ export default {
 		}
 	},
 	daisyui: {
-		themes: ['cmyk', 'forest'],
-		darkTheme: ['forest'],
+		themes: ['cmyk', 'black'],
+		darkTheme: ['black'],
 		styled: true,
 		base: true,
 		utils: true
