@@ -3,7 +3,7 @@
 	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
 	import clockIcon from '$lib/assets/clock-icon.svg?raw';
 	import messageIcon from '$lib/assets/message-icon.svg?raw';
-	import {scale} from 'svelte/transition'
+	import { scale } from 'svelte/transition';
 	import { expoInOut } from 'svelte/easing';
 
 	export let post: PostData;
@@ -32,9 +32,9 @@
 </script>
 
 <div
-	class="card shadow-xl p-2 min-h-[32] flex flex-col gap-1 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none"
-	transition:scale={{ duration: 500, delay: 500, easing: expoInOut}}
-	>
+	class="shadow-xl rounded-box p-2 min-h-[32] flex flex-col gap-1 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none break-words"
+	transition:scale={{ duration: 500, delay: 500, easing: expoInOut }}
+>
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"

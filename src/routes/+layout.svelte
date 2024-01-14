@@ -21,7 +21,7 @@
 		}
 		theme = writable(themePreference)
 		theme.subscribe((value) => {
-			document.cookie = `theme=${value}`
+			document.cookie = `theme=${value}; max-age=${60 * 60 * 24 * 365}`
 			document.documentElement.dataset['theme'] = value ? 'forest' : 'cmyk'
 		});
 	});
@@ -67,12 +67,12 @@
 <!-- Reverse the order so nav bar at bottom on mobile -->
 <div class="w-full grow flex flex-col md:flex-col-reverse">
 	<ul
-		class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 bg-base-200 z-[1]"
+		class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 bg-base-300 z-[1]"
 	>
 		{#each feeds as feedName}
 			<li>
 				<a href="/{feedName}" class={$page.url.pathname === `/${feedName}` ? 'active' : ''}>
-					<span class="capitalize">{feedName}</span>
+					<span class="text-sm md:text-base w-8 flex justify-center capitalize">{feedName}</span>
 				</a>
 			</li>
 		{/each}

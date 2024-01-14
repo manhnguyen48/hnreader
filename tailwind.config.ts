@@ -6,7 +6,7 @@ export default {
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	theme: {
 		extend: {
-			fontFamily: { sans: ['Inter Tight', 'sans serif'], mono: ['Spline Sans Mono', 'mono'] }
+			fontFamily: { sans: ['Inter Tight','Helvetica','sans serif'], mono: ['Spline Sans Mono', 'mono'] }
 		}
 	},
 	daisyui: {
