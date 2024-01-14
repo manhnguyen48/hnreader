@@ -33,7 +33,7 @@
 <main class="min-h-screen">
 	<div class="navbar bg-base-100 text-base-content justify-between">
 		<h1
-			class="text-3xl md:text-5xl font-mono font-light mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+			class="text-3xl md:text-5xl font-mono mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
 		>
 			<a href="/">HackerNews</a>
 		</h1>
@@ -65,7 +65,7 @@
 	<!-- Reverse the order so nav bar at bottom on mobile -->
 	<div class="w-full grow flex flex-col md:flex-col-reverse">
 		<ul
-			class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 bg-base-300 z-[1]"
+			class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 z-[1] backdrop-blur-md"
 		>
 			{#each feeds as feedName}
 				<li>
