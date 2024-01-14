@@ -33,14 +33,14 @@
 <main class="min-h-screen">
 	<div class="navbar bg-base-100 text-base-content justify-between">
 		<h1
-			class="text-3xl font-mono md:text-5xl font-medium mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+			class="text-3xl md:text-5xl font-mono font-light mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
 		>
 			<a href="/">HackerNews</a>
 		</h1>
 		<div class="dropdown dropdown-bottom dropdown-end px-1">
-			<label class="swap swap-rotate m-1">
+			<label class="swap swap-rotate m-1" for="theme-switch">
 				<!-- this hidden checkbox controls the state -->
-				<input type="checkbox" class="theme-controller" bind:checked={$theme} />
+				<input type="checkbox" id="theme-switch" class="theme-controller" bind:checked={$theme} />
 				<!-- sun icon -->
 				<svg
 					class="swap-on fill-current w-8 h-8"
@@ -71,9 +71,11 @@
 				<li>
 					<a
 						href="/{feedName}"
-						class="rounded-xl {$page.url.pathname === `/${feedName}` ? 'active' : ''}"
+						class="rounded-2xl {$page.url.pathname === `/${feedName}` ? 'active' : ''}"
 					>
-						<span class="text-sm md:text-base w-8 flex justify-center capitalize">{feedName}</span>
+						<span class="text-sm md:text-base font-light w-8 flex justify-center capitalize"
+							>{feedName}</span
+						>
 					</a>
 				</li>
 			{/each}

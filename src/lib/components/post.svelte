@@ -32,17 +32,17 @@
 </script>
 
 <div
-	class="shadow-xl rounded-xl p-2 min-h-[32] flex flex-col gap-1 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none break-words"
+	class="shadow-xl rounded-2xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none break-words"
 	transition:scale={{ duration: 500, delay: 500, easing: expoInOut }}
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1 font-light"
+		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1"
 	>
 		<header class="text-base">{post.title}</header>
-		<span class="text-xs">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
+		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
 	<div class="flex flex-col gap-1 justify-between items-end">
 		<a
