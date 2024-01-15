@@ -29,7 +29,7 @@
         <input type="checkbox" id="theme-switch" class="theme-controller" bind:checked={$theme} />
         <!-- sun icon -->
         <svg
-            class="swap-on fill-current w-8 h-8"
+            class="swap-on fill-current w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             ><path
@@ -38,7 +38,7 @@
         >
         <!-- moon icon -->
         <svg
-            class="swap-off fill-current w-8 h-8"
+            class="swap-off fill-current w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             ><path
