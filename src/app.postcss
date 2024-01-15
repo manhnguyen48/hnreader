@@ -2,3 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+body {
+	--scrollbar-width: 5px;
+	--scrollbar-border-radius: 8px;
+	--scrollbar-thumb-color: #a0a0a0;
+	--show-double-buttons: none;
+	--scrollbar-border-thickness: 0px;
+	--scrollbar-height: 15px;
+	--scrollbar-track-color: transparent;
+}
+body::-webkit-scrollbar {
+	width: var(--scrollbar-width, 20px);
+	height: var(--scrollbar-height, 20px);
+}
+body::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb-color, #3b82f6);
+	border: var(--scrollbar-border-thickness, 3px) solid
+		var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
+}
+body::-webkit-scrollbar-track {
+	background: var(--scrollbar-track-color, #a1a1aa);
+}
+body::-webkit-scrollbar-corner {
+	background: var(--scrollbar-corner-color, #ffffff);
+	border: var(--scrollbar-border-thickness, 3px) solid
+		var(--scrollbar-border-color, rgb(255, 255, 255));
+	border-radius: var(--scrollbar-border-radius, 4px);
+}
