@@ -5,7 +5,7 @@
 </script>
 
 <footer
-	class="footer flex items-center justify-between bg-base-300 text-base-content px-4 py-2 h-12 top-3/4"
+	class="footer flex items-center justify-between bg-base-200 text-base-content px-4 py-2 h-12 top-3/4"
 >
 	<p class="text-base">Made by Ethan Nguyen</p>
 	<span class="flex items-center gap-2">
