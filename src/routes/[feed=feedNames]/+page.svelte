@@ -4,7 +4,7 @@
 	import Post from '$lib/components/post.svelte';
 	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import { navigating } from '$app/stores';
-	import jumboCat from '$lib/assets/jumbo-cat.gif';
+	import LoadingPage from '$lib/components/loadingPage.svelte';
 	export let data: { posts: PostData[] };
 
 	let showButton = false;
@@ -55,10 +55,7 @@
 </script>
 
 {#if $navigating}
-	<div class="w-full h-screen flex flex-col gap-2 items-center justify-center">
-		<p class="text-3xl">Loading...</p>
-		<img src={jumboCat} alt="Happy Cat" width="40%" height="40%" />
-	</div>
+	<LoadingPage/>
 {:else}
 	<div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-2 m-2 md:m-4 mb-16">
 		{#each posts as post (post.id)}

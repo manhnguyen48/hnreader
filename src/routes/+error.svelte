@@ -1,9 +1,6 @@
-<script>
-    import cryingCat from '$lib/assets/crying-cat.gif'
+<script lang="ts">
+    import ErrorPage from '$lib/components/errorPage.svelte'
 </script>
 
-<div class="w-full h-screen flex flex-col gap-2 items-center justify-center">
-    <p class="text-4xl">Address not found</p>
-    <img src="{cryingCat}" alt="Cat crying" width="40%" height="40%">
-</div>
+<ErrorPage errorText = "Address not found"/>
 

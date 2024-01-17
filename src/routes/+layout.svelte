@@ -14,7 +14,7 @@
 			<a href="/">HackerNews</a>
 		</h1>
 		<div>
-			<a href="/search" rel="noopenner noreferrer">
+			<a href="/search" rel="noopenner noreferrer" aria-label="Search">
 				{@html searchIcon}
 			</a>
 			<ThemeSwitch />
