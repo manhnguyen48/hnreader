@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { scale } from 'svelte/transition';
+	import { expoInOut } from 'svelte/easing';
+	import { enhance } from '$app/forms';
+
 	let inputTerm: string;
 	let finalTerm: string;
 
@@ -16,8 +20,11 @@
 	};
 </script>
 
-<div class="w-full flex sticky top-0 backdrop-blur-md justify-center items-center px-4">
-	<a href="/" aria-label="Back to Homepage">
+<div
+	class="w-full flex sticky top-0 backdrop-blur-md justify-center items-center px-4"
+	transition:scale={{ duration: 200, delay: 200, easing: expoInOut }}
+>
+	<a href="/" aria-label="Back to Homepage" class="btn btn-ghost rounded-2xl">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -35,7 +42,7 @@
 	</a>
 
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<form class="flex justify-center w-full m-2" on:keydown={handleKeyDown}>
+	<form class="flex justify-center w-full m-2" on:keydown={handleKeyDown} use:enhance method="POST">
 		<input
 			type="search"
 			aria-label="search-box"
