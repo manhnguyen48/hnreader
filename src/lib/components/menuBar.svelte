@@ -4,7 +4,7 @@
 </script>
 
 <ul
-	class="menu menu-horizontal justify-evenly md:justify-center order-2 md:order-1 sticky bottom-0 md:top-0 z-[1] backdrop-blur-md"
+	class="menu menu-horizontal flex justify-evenly md:justify-center"
 >
 	{#each feeds as feedName}
 		<li>

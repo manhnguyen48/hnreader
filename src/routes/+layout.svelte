@@ -3,7 +3,7 @@
 
 	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	import MenuBar from '$lib/components/menuBar.svelte';
+	import searchIcon from '$lib/assets/search-icon.svg?raw';
 </script>
 
 <main class="min-h-screen">
@@ -13,12 +13,13 @@
 		>
 			<a href="/">HackerNews</a>
 		</h1>
-		<ThemeSwitch />
+		<div>
+			<a href="/search" rel="noopenner noreferrer" aria-label="Search" class = "btn btn-ghost rounded-2xl">
+				{@html searchIcon}
+			</a>
+			<ThemeSwitch />
+		</div>
 	</div>
-	<!-- Reverse the order so nav bar at bottom on mobile -->
-	<div class="w-full grow flex flex-col md:flex-col-reverse">
-		<MenuBar />
-		<slot class="order-1 md:order-2 overflow-auto" />
-	</div>
+	<slot/>
 </main>
 <Footer />
