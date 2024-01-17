@@ -32,7 +32,7 @@
 </script>
 
 <div
-	class="shadow-xl rounded-2xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral hover:border-success select-none break-words"
+	class="shadow-xl rounded-2xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral select-none break-words"
 	transition:scale={{ duration: 500, delay: 500, easing: expoInOut }}
 >
 	<a
