@@ -21,7 +21,7 @@
 </script>
 
 <div
-	class="w-full flex sticky top-0 backdrop-blur-md justify-center items-center px-4"
+	class="w-full flex sticky top-0 backdrop-blur-md justify-evenly md:justify-center items-center"
 	transition:scale={{ duration: 200, delay: 200, easing: expoInOut }}
 >
 	<a href="/" aria-label="Back to Homepage" class="btn btn-ghost rounded-2xl">
@@ -42,14 +42,14 @@
 	</a>
 
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<form class="flex justify-center w-full m-2" on:keydown={handleKeyDown} use:enhance method="POST">
+	<form class="flex justify-center w-4/5 py-2" on:keydown={handleKeyDown} use:enhance method="POST">
 		<input
 			type="search"
 			aria-label="search-box"
 			autocomplete="off"
 			id="search-term"
 			placeholder="Search HackerNews"
-			class="input input-bordered rounded-2xl w-4/5 md:w-1/2"
+			class="input input-bordered rounded-2xl w-[90%]"
 			bind:value={inputTerm}
 		/>
 	</form>

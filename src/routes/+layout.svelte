@@ -4,6 +4,7 @@
 	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import searchIcon from '$lib/assets/search-icon.svg?raw';
+	import { page } from '$app/stores';
 </script>
 
 <main class="min-h-screen">
@@ -14,12 +15,19 @@
 			<a href="/">HackerNews</a>
 		</h1>
 		<div>
-			<a href="/search" rel="noopenner noreferrer" aria-label="Search" class = "btn btn-ghost rounded-2xl">
-				{@html searchIcon}
-			</a>
+			{#if $page.url.pathname !== '/search'}
+				<a
+					href="/search"
+					rel="noopenner noreferrer"
+					aria-label="Search"
+					class="btn btn-ghost rounded-2xl"
+				>
+					{@html searchIcon}
+				</a>
+			{/if}
 			<ThemeSwitch />
 		</div>
 	</div>
-	<slot/>
+	<slot />
 </main>
 <Footer />
