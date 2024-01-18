@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { afterUpdate, onDestroy } from 'svelte';
-	import { navigating } from '$app/stores';
 	import type { PostData } from '$lib/types';
 	import Post from '$lib/components/post.svelte';
 	import ScrollTop from '$lib/components/scrollTop.svelte';
-	import LoadingPage from '$lib/components/loadingPage.svelte';
 	export let data: { posts: PostData[] };
 
 	let allPosts: PostData[];
@@ -53,7 +51,7 @@
 	{/each}
 	{#if posts.length < allPosts.length}
 		<div id="load-more" class="flex items-center justify-center">
-			<LoadingPage />
+			<span class="loading loading-ring loading-md"></span>
 		</div>
 	{/if}
 </div>
