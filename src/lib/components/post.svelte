@@ -31,8 +31,8 @@
 
 <div
 	class="flex min-h-[2rem] select-none flex-col justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
-	in:scale={{ duration: 500, delay: 600, easing: expoOut }}
-	out:scale={{ duration: 500, easing: expoIn }}
+	in:scale={{ duration: 400, delay: 600, easing: expoOut }}
+	out:scale={{ duration: 400, easing: expoIn }}
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
@@ -43,16 +43,14 @@
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
-	<div class="grid items-center justify-end">
+	<div class="flex items-center justify-end">
 		<a
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<div
-				class="flex min-w-36 items-end justify-between py-0.5 font-mono text-xs font-light md:min-w-32"
-			>
+			<div class="flex items-end justify-between gap-3 p-0.5 font-mono text-xs font-light">
 				<span class="flex items-center gap-0.5"
 					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
 				>
