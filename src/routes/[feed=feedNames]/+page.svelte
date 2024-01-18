@@ -45,20 +45,16 @@
 	});
 </script>
 
-{#if $navigating}
-	<LoadingPage />
-{:else}
-	<div
-		class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7"
-	>
-		{#each posts as post (post.id)}
-			<Post {post}></Post>
-		{/each}
-		{#if posts.length < allPosts.length}
-			<div id="load-more" class="flex items-center justify-center">
-				<span class="loading loading-ring loading-lg"></span>
-			</div>
-		{/if}
-	</div>
-	<ScrollTop />
-{/if}
+<div
+	class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7"
+>
+	{#each posts as post (post.id)}
+		<Post {post}></Post>
+	{/each}
+	{#if posts.length < allPosts.length}
+		<div id="load-more" class="flex items-center justify-center">
+			<LoadingPage />
+		</div>
+	{/if}
+</div>
+<ScrollTop />

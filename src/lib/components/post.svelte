@@ -31,8 +31,8 @@
 
 <div
 	class="flex min-h-[32] select-none flex-col content-around justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
-	in:scale={{ duration: 500, delay: 400, easing: expoIn }}
-	out:scale={{ duration: 500, easing: expoOut }}
+	in:scale={{ duration: 500, delay: 600, easing: expoOut }}
+	out:scale={{ duration: 500, easing: expoIn }}
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
