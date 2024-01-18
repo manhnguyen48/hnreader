@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { PostData } from '$lib/types';
-	import upArrow from '$lib/assets/up-arrow-icon.svg?raw';
-	import clockIcon from '$lib/assets/clock-icon.svg?raw';
-	import messageIcon from '$lib/assets/message-icon.svg?raw';
 	import { scale } from 'svelte/transition';
-	import { expoInOut } from 'svelte/easing';
+	import { expoIn, expoOut } from 'svelte/easing';
+	import { Clock, MessageSquare, ArrowUp } from 'lucide-svelte';
 
 	export let post: PostData;
 	function timeDifference(previous: number): string {
@@ -33,7 +31,8 @@
 
 <div
 	class="flex min-h-[32] select-none flex-col content-around justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
-	transition:scale={{ duration: 500, delay: 500, easing: expoInOut }}
+	in:scale={{ duration: 500, delay: 400, easing: expoIn }}
+	out:scale={{ duration: 500, easing: expoOut }}
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
@@ -52,11 +51,15 @@
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
 			<div class="flex items-end justify-between gap-2 px-1 font-mono text-xs font-light">
-				<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
 				<span class="flex items-center gap-0.5"
-					>{@html messageIcon} {post.kids ? post.kids.length : 0}</span
+					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
 				>
-				<span class="flex items-center gap-0.5">{@html clockIcon} {timeDifference(post.time)}</span>
+				<span class="flex items-center gap-0.5"
+					><MessageSquare size="14" strokeWidth="2" /> {post.kids ? post.kids.length : 0}</span
+				>
+				<span class="flex items-center gap-0.5"
+					><Clock size="14" strokeWidth="2" /> {timeDifference(post.time)}</span
+				>
 			</div>
 		</a>
 	</div>

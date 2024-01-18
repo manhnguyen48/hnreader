@@ -2,6 +2,7 @@
 	import { type PostData } from '$lib/types';
 	import Post from '$lib/components/post.svelte';
 	import ErrorPage from '$lib/components/errorPage.svelte';
+	import ScrollTop from '$lib/components/scrollTop.svelte';
 
 	export let data: { results: PostData[] };
 </script>
@@ -17,5 +18,6 @@
 				<Post {post} />
 			{/each}
 		</div>
+		<ScrollTop />
 	{/if}
 {/if}

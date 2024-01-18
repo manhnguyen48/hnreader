@@ -3,7 +3,7 @@
 
 	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	import searchIcon from '$lib/assets/search-icon.svg?raw';
+	import { Search } from 'lucide-svelte';
 	import { page } from '$app/stores';
 </script>
 
@@ -22,7 +22,7 @@
 					aria-label="Search"
 					class="btn btn-ghost rounded-2xl"
 				>
-					{@html searchIcon}
+					<Search strokeWidth="2" size="20" />
 				</a>
 			{/if}
 			<ThemeSwitch />

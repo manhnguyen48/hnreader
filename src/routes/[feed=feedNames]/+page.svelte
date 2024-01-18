@@ -1,21 +1,17 @@
 <script lang="ts">
-	import type { PostData } from '$lib/types';
-	import scrollToTopIcon from '$lib/assets/scroll-top-icon.svg?raw';
-	import Post from '$lib/components/post.svelte';
-	import { afterUpdate, onDestroy, onMount } from 'svelte';
+	import { afterUpdate, onDestroy } from 'svelte';
 	import { navigating } from '$app/stores';
+	import type { PostData } from '$lib/types';
+	import Post from '$lib/components/post.svelte';
+	import ScrollTop from '$lib/components/scrollTop.svelte';
 	import LoadingPage from '$lib/components/loadingPage.svelte';
 	export let data: { posts: PostData[] };
 
-	let showButton = false;
 	let allPosts: PostData[];
 	let posts: PostData[];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
 
-	const scrollToTop = () => {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	};
 	const loadMore = () => {
 		loading = true;
 		const morePosts = allPosts.slice(posts.length, posts.length + 20); // Load 20 more posts
@@ -42,11 +38,6 @@
 			observer.observe(loadMoreEl);
 		}
 	});
-	onMount(() => {
-		window.onscroll = () => {
-			showButton = window.scrollY > 200;
-		};
-	});
 	onDestroy(() => {
 		if (observer) {
 			observer.disconnect();
@@ -69,12 +60,5 @@
 			</div>
 		{/if}
 	</div>
-	<button
-		class="btn btn-square fixed bottom-28 right-4 items-center justify-center rounded-lg"
-		aria-label="Scroll To Top"
-		on:click={scrollToTop}
-		style="display: {showButton ? 'flex' : 'none'}"
-	>
-		{@html scrollToTopIcon}
-	</button>
+	<ScrollTop />
 {/if}

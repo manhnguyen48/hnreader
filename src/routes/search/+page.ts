@@ -10,7 +10,7 @@ export const load: PageLoad = async ({ url }) => {
 		const now: Date = new Date();
 		const aMonthAgo: Date = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 		const algoliaResp = await index.search(searchQuery, {
-			hitsPerPage: 50,
+			hitsPerPage: 30,
 			tagFilters: 'story',
 			numericFilters: [`created_at_i>=${Math.floor(aMonthAgo.getTime() / 1000)}`],
 			restrictSearchableAttributes: ['title', 'url', 'story_text'],

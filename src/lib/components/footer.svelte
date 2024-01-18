@@ -1,7 +1,5 @@
 <script lang="ts">
-	import github from '$lib/assets/github.svg?raw';
-	import linkedin from '$lib/assets/linkedin.svg?raw';
-	import twitter from '$lib/assets/twitter.svg?raw';
+	import { Linkedin, Github, Twitter } from 'lucide-svelte';
 </script>
 
 <footer
@@ -15,7 +13,7 @@
 			aria-label="GitHub"
 			rel="noopener noreferrer"
 		>
-			{@html github}</a
+			<Github strokeWidth="1.5" /></a
 		>
 		<a
 			href="https://www.linkedin.com/in/ethannguyen48/"
@@ -23,7 +21,7 @@
 			aria-label="LinkedIn"
 			rel="noopener noreferrer"
 		>
-			{@html linkedin}</a
+			<Linkedin strokeWidth="1.5" /></a
 		>
 		<a
 			href="https://twitter.com/bananadata48"
@@ -31,7 +29,7 @@
 			aria-label="Twitter"
 			rel="noopener noreferrer"
 		>
-			{@html twitter}</a
+			<Twitter strokeWidth="1.5" /></a
 		>
 	</span>
 </footer>
