@@ -7,8 +7,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Inter Tight', 'Helvetica', 'sans serif'],
-				mono: ['Spline Sans Mono', 'mono']
+				sans: ['Inter Tight', 'ui-sans-serif', 'sans-serif', 'system-ui'],
+				mono: ['Spline Sans Mono', 'ui-monospace', 'monospace']
 			}
 		}
 	},

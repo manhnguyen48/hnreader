@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="flex min-h-[32] select-none flex-col content-around justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
+	class="flex min-h-[2rem] select-none flex-col justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
 	in:scale={{ duration: 500, delay: 600, easing: expoOut }}
 	out:scale={{ duration: 500, easing: expoIn }}
 >
@@ -50,7 +50,9 @@
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<div class="flex min-w-32 items-end justify-between pr-1 font-mono text-xs font-light">
+			<div
+				class="flex min-w-36 items-end justify-between py-0.5 font-mono text-xs font-light md:min-w-32"
+			>
 				<span class="flex items-center gap-0.5"
 					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
 				>
