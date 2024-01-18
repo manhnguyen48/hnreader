@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch';
 import type { PageLoad } from '../$types';
- 
+
 export const load: PageLoad = async ({ url }) => {
 	const client = algoliasearch('UJ5WYC0L7X', '28f0e1ec37a5e792e6845e67da5f20dd');
 	const index = client.initIndex('Item_dev');
@@ -12,7 +12,7 @@ export const load: PageLoad = async ({ url }) => {
 		const algoliaResp = await index.search(searchQuery, {
 			hitsPerPage: 50,
 			tagFilters: 'story',
-			numericFilters: [`created_at_i>=${Math.floor(aMonthAgo.getTime()/1000)}`],
+			numericFilters: [`created_at_i>=${Math.floor(aMonthAgo.getTime() / 1000)}`],
 			restrictSearchableAttributes: ['title', 'url', 'story_text'],
 			attributesToRetrieve: [
 				'author',

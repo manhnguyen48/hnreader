@@ -3,9 +3,7 @@
 	const feeds: string[] = ['new', 'best', 'top', 'show', 'ask'];
 </script>
 
-<ul
-	class="menu menu-horizontal flex justify-evenly md:justify-center"
->
+<ul class="menu menu-horizontal flex justify-evenly md:justify-center">
 	{#each feeds as feedName}
 		<li>
 			<a
@@ -14,7 +12,7 @@
 					? 'active font-medium'
 					: 'font-light'}"
 			>
-				<span class="text-sm md:text-base w-8 flex justify-center capitalize">{feedName}</span>
+				<span class="flex w-8 justify-center text-sm capitalize md:text-base">{feedName}</span>
 			</a>
 		</li>
 	{/each}

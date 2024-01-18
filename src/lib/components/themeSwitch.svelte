@@ -23,7 +23,7 @@
 	});
 </script>
 
-<div class="dropdown dropdown-bottom dropdown-end px-1">
+<div class="dropdown dropdown-end dropdown-bottom px-1">
 	<label class="swap swap-rotate m-1">
 		<!-- this hidden checkbox controls the state -->
 		<input
@@ -40,7 +40,7 @@
 			viewBox="0 0 24 24"
 			stroke-width="1.5"
 			stroke="currentColor"
-			class="swap-on w-6 h-6"
+			class="swap-on h-6 w-6"
 		>
 			<path
 				stroke-linecap="round"
@@ -55,7 +55,7 @@
 			viewBox="0 0 24 24"
 			stroke-width="1.5"
 			stroke="currentColor"
-			class="swap-off w-6 h-6"
+			class="swap-off h-6 w-6"
 		>
 			<path
 				stroke-linecap="round"

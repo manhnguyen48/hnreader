@@ -24,12 +24,12 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
 
 	if (snapshot.exists()) {
 		const postIds = snapshot.val();
-		const posts = await Promise.allSettled(postIds.map(getPost)); 
+		const posts = await Promise.allSettled(postIds.map(getPost));
 		// Cache data so we don't query the server too much
 		setHeaders({
 			'cache-control': 'public, max-age=120, must-revalidate'
 		});
-		return { posts: posts.map(p => p.status === 'fulfilled' ? p.value : null) };
+		return { posts: posts.map((p) => (p.status === 'fulfilled' ? p.value : null)) };
 	} else {
 		return {
 			status: 404,

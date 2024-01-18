@@ -55,9 +55,11 @@
 </script>
 
 {#if $navigating}
-	<LoadingPage/>
+	<LoadingPage />
 {:else}
-	<div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-2 m-2 md:m-4 mb-16">
+	<div
+		class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7"
+	>
 		{#each posts as post (post.id)}
 			<Post {post}></Post>
 		{/each}
@@ -68,7 +70,7 @@
 		{/if}
 	</div>
 	<button
-		class="btn btn-square rounded-lg fixed bottom-28 right-4 justify-center items-center"
+		class="btn btn-square fixed bottom-28 right-4 items-center justify-center rounded-lg"
 		aria-label="Scroll To Top"
 		on:click={scrollToTop}
 		style="display: {showButton ? 'flex' : 'none'}"

@@ -32,26 +32,26 @@
 </script>
 
 <div
-	class="shadow-xl rounded-2xl p-2 min-h-[32] flex flex-col gap-2 md:gap-4 justify-between content-around border border-solid border-neutral select-none break-words"
+	class="flex min-h-[32] select-none flex-col content-around justify-between gap-2 break-words rounded-2xl border border-solid border-neutral p-2 shadow-xl md:gap-4"
 	transition:scale={{ duration: 500, delay: 500, easing: expoInOut }}
 >
 	<a
 		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="hover:underline underline-offset-4 visited:text-indigo-400 px-1"
+		class="px-1 underline-offset-4 visited:text-indigo-400 hover:underline"
 	>
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
-	<div class="flex justify-end items-center">
+	<div class="flex items-center justify-end">
 		<a
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="hover:bg-neutral hover:text-neutral-content rounded-md"
+			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<div class="flex items-end justify-between text-xs gap-2 px-1 font-mono font-light">
+			<div class="flex items-end justify-between gap-2 px-1 font-mono text-xs font-light">
 				<span class="flex items-center gap-0.5">{@html upArrow} {post.score}</span>
 				<span class="flex items-center gap-0.5"
 					>{@html messageIcon} {post.kids ? post.kids.length : 0}</span

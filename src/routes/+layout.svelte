@@ -8,9 +8,9 @@
 </script>
 
 <main class="min-h-screen">
-	<div class="navbar bg-base-100 text-base-content justify-between">
+	<div class="navbar justify-between bg-base-100 text-base-content">
 		<h1
-			class="text-3xl md:text-5xl font-mono mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+			class="mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 box-decoration-clone bg-clip-text font-mono text-3xl text-transparent md:text-5xl"
 		>
 			<a href="/">HackerNews</a>
 		</h1>
