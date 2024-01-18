@@ -43,14 +43,14 @@
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
 	</a>
-	<div class="flex items-center justify-end">
+	<div class="grid items-center justify-end">
 		<a
 			href="https://news.ycombinator.com/item?id={post.id}"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<div class="flex items-end justify-between gap-2 px-1 font-mono text-xs font-light">
+			<div class="flex min-w-32 items-end justify-between pr-1 font-mono text-xs font-light">
 				<span class="flex items-center gap-0.5"
 					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
 				>
