@@ -3,29 +3,35 @@
 	import type { PostData } from '$lib/types';
 	import Post from '$lib/components/post.svelte';
 	import ScrollTop from '$lib/components/scrollTop.svelte';
-	export let data: { posts: PostData[] };
+	import { getHNPost, isFulfilled } from '$lib/db';
 
-	let allPosts: PostData[];
+	export let data: { postIds: number[]; posts: PostData[] };
 	let posts: PostData[];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
 
-	const loadMore = () => {
+	const loadMore = async () => {
 		loading = true;
-		const morePosts = allPosts.slice(posts.length, posts.length + 20); // Load 20 more posts
-		posts = [...posts, ...morePosts];
+		const morePostsIds = data.postIds.slice(posts.length, posts.length + 20); // Load 20 more posts
+		if (morePostsIds) {
+			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getHNPost))
+				.then((res) => res.filter(isFulfilled))
+				.then((fulfilled) => fulfilled.map((p) => p.value));
+			if (morePosts) {
+				posts = [...posts, ...morePosts];
+			}
+		}
 		loading = false;
 	};
 	$: {
 		if (data && data.posts) {
-			allPosts = data.posts;
-			posts = allPosts.slice(0, 50);
+			posts = data.posts;
 		}
 	}
 	afterUpdate(() => {
 		observer = new IntersectionObserver(
 			(entries) => {
-				if (entries[0].intersectionRatio > 0 && !loading) {
+				if (entries[0].isIntersecting && !loading) {
 					loadMore();
 				}
 			},
@@ -37,9 +43,7 @@
 		}
 	});
 	onDestroy(() => {
-		if (observer) {
-			observer.disconnect();
-		}
+		observer?.disconnect();
 	});
 </script>
 
@@ -49,7 +53,7 @@
 	{#each posts as post (post.id)}
 		<Post {post}></Post>
 	{/each}
-	{#if posts.length < allPosts.length}
+	{#if posts.length < data.postIds.length}
 		<div id="load-more" class="flex items-center justify-center">
 			<span class="loading loading-ring loading-md"></span>
 		</div>
