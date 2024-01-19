@@ -13,7 +13,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // Function to query a single post given an ID
-const getPost = async (id: number) => {
+const getHNPost = async (id: number) => {
 	try {
 		const snapshot = await get(child(ref(db), `v0/item/${id}`));
 		return snapshot.val();
@@ -22,6 +22,8 @@ const getPost = async (id: number) => {
 		return null;
 	}
 };
+
+let cachedPostIds = []
 
 export const load: PageServerLoad = async ({ params, setHeaders }) => {
 	const feed = params.feed + 'stories';
@@ -36,13 +38,15 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
 		};
 	}
 	if (snapshot.exists()) {
-		const postIds = snapshot.val();
-		const posts = await Promise.allSettled(postIds.map(getPost));
+		cachedPostIds = snapshot.val()
+		const posts = await Promise.allSettled(cachedPostIds.slice(0,50).map(getHNPost));
 		// Cache data so we don't query the server too much
 		setHeaders({
 			'cache-control': 'public, max-age=120, must-revalidate'
 		});
-		return { posts: posts.map((p) => (p.status === 'fulfilled' ? p.value : null)) };
+		return { 
+			postIds: cachedPostIds, 
+			posts: posts.map((p) => (p.status === 'fulfilled' ? p.value : null)) };
 	} else {
 		return {
 			status: 404,
@@ -50,3 +54,4 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
 		};
 	}
 };
+

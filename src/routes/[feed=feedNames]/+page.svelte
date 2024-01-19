@@ -3,23 +3,49 @@
 	import type { PostData } from '$lib/types';
 	import Post from '$lib/components/post.svelte';
 	import ScrollTop from '$lib/components/scrollTop.svelte';
-	export let data: { posts: PostData[] };
 
-	let allPosts: PostData[];
+	import { initializeApp } from 'firebase/app';
+	import { getDatabase, ref, get, child } from 'firebase/database';
+	const firebaseConfig = {
+		databaseURL: 'https://hacker-news.firebaseio.com'
+	};
+
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+
+	// Initialize Realtime Database and get a reference to the service
+	const db = getDatabase(app);
+
+	// Function to query a single post given an ID
+	const getHNPost = async (id: number): Promise<PostData> => {
+		const snapshot = await get(child(ref(db), `v0/item/${id}`));
+		return snapshot.val();
+	};
+
+	export let data: { postIds: number[]; posts: PostData[] };
+
 	let posts: PostData[];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
-
-	const loadMore = () => {
+	const isFulfilled = <PostData,>(
+		p: PromiseSettledResult<PostData>
+	): p is PromiseFulfilledResult<PostData> => p.status === 'fulfilled';
+	const loadMore = async () => {
 		loading = true;
-		const morePosts = allPosts.slice(posts.length, posts.length + 20); // Load 20 more posts
-		posts = [...posts, ...morePosts];
+		const morePostsIds = data.postIds.slice(posts.length, posts.length + 20); // Load 20 more posts
+		if (morePostsIds) {
+			const morePosts = await Promise.allSettled(morePostsIds.map(getHNPost))
+			.then((res) => res.filter(isFulfilled))
+			.then((fulfilled) => fulfilled.map((p) => p.value));
+		if (morePosts) {
+			posts = [...posts, ...morePosts];
+		}
+		}
 		loading = false;
 	};
 	$: {
 		if (data && data.posts) {
-			allPosts = data.posts;
-			posts = allPosts.slice(0, 50);
+			posts = data.posts;
 		}
 	}
 	afterUpdate(() => {
@@ -49,7 +75,7 @@
 	{#each posts as post (post.id)}
 		<Post {post}></Post>
 	{/each}
-	{#if posts.length < allPosts.length}
+	{#if posts.length < data.postIds.length}
 		<div id="load-more" class="flex items-center justify-center">
 			<span class="loading loading-ring loading-md"></span>
 		</div>
