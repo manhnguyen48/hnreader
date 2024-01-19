@@ -15,8 +15,6 @@
 	<a href="/" aria-label="Back to Homepage" class="btn btn-ghost rounded-2xl">
 		<ArrowLeft strokeWidth="1.5" />
 	</a>
-
-	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 	<form class="flex w-4/5 justify-center py-2">
 		<input
 			type="search"
