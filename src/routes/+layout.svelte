@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css';
+	import '../app.postcss';
 
 	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
 	import Footer from '$lib/components/footer.svelte';
