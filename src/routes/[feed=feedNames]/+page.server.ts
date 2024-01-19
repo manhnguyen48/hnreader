@@ -14,14 +14,27 @@ const db = getDatabase(app);
 
 // Function to query a single post given an ID
 const getPost = async (id: number) => {
-	const snapshot = await get(child(ref(db), `v0/item/${id}`));
-	return snapshot.val();
+	try {
+		const snapshot = await get(child(ref(db), `v0/item/${id}`));
+		return snapshot.val();
+	} catch (error) {
+		console.error(`Failed to get post ${id}`, error);
+		return null;
+	}
 };
 
 export const load: PageServerLoad = async ({ params, setHeaders }) => {
 	const feed = params.feed + 'stories';
-	const snapshot = await get(child(ref(db), `v0/${feed}`));
-
+	let snapshot;
+	try {
+		snapshot = await get(child(ref(db), `v0/${feed}`));
+	} catch (error) {
+		console.error('Failed to get feed:', error);
+		return {
+			status: 500,
+			error: new Error('Internal server error')
+		};
+	}
 	if (snapshot.exists()) {
 		const postIds = snapshot.val();
 		const posts = await Promise.allSettled(postIds.map(getPost));
