@@ -3,43 +3,23 @@
 	import type { PostData } from '$lib/types';
 	import Post from '$lib/components/post.svelte';
 	import ScrollTop from '$lib/components/scrollTop.svelte';
-
-	import { initializeApp } from 'firebase/app';
-	import { getDatabase, ref, get, child } from 'firebase/database';
-	const firebaseConfig = {
-		databaseURL: 'https://hacker-news.firebaseio.com'
-	};
-
-	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-
-	// Initialize Realtime Database and get a reference to the service
-	const db = getDatabase(app);
-
-	// Function to query a single post given an ID
-	const getHNPost = async (id: number): Promise<PostData> => {
-		const snapshot = await get(child(ref(db), `v0/item/${id}`));
-		return snapshot.val();
-	};
+	import { getHNPost, isFulfilled } from '$lib/db';
 
 	export let data: { postIds: number[]; posts: PostData[] };
-
 	let posts: PostData[];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
-	const isFulfilled = <PostData,>(
-		p: PromiseSettledResult<PostData>
-	): p is PromiseFulfilledResult<PostData> => p.status === 'fulfilled';
+
 	const loadMore = async () => {
 		loading = true;
 		const morePostsIds = data.postIds.slice(posts.length, posts.length + 20); // Load 20 more posts
 		if (morePostsIds) {
-			const morePosts = await Promise.allSettled(morePostsIds.map(getHNPost))
-			.then((res) => res.filter(isFulfilled))
-			.then((fulfilled) => fulfilled.map((p) => p.value));
-		if (morePosts) {
-			posts = [...posts, ...morePosts];
-		}
+			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getHNPost))
+				.then((res) => res.filter(isFulfilled))
+				.then((fulfilled) => fulfilled.map((p) => p.value));
+			if (morePosts) {
+				posts = [...posts, ...morePosts];
+			}
 		}
 		loading = false;
 	};
@@ -51,7 +31,7 @@
 	afterUpdate(() => {
 		observer = new IntersectionObserver(
 			(entries) => {
-				if (entries[0].intersectionRatio > 0 && !loading) {
+				if (entries[0].isIntersecting && !loading) {
 					loadMore();
 				}
 			},
@@ -63,9 +43,7 @@
 		}
 	});
 	onDestroy(() => {
-		if (observer) {
-			observer.disconnect();
-		}
+		observer?.disconnect();
 	});
 </script>
 
