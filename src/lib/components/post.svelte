@@ -55,7 +55,7 @@
 					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
 				>
 				<span class="flex items-center gap-0.5"
-					><MessageSquare size="14" strokeWidth="2" /> {post.descendants}</span
+					><MessageSquare size="14" strokeWidth="2" /> {post.descendants ?? 0}</span
 				>
 				<span class="flex items-center gap-0.5"
 					><Clock size="14" strokeWidth="2" /> {timeDifference(post.time)}</span
