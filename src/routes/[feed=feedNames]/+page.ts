@@ -3,6 +3,7 @@ import type { PageLoad } from '../$types';
 
 export const ssr = false;
 export const load: PageLoad = async ({ params }) => {
+	// @ts-ignore
 	const feed: string = params.feed + 'stories';
 	let snapshot;
 	snapshot = await getPostIds(feed);
