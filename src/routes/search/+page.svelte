@@ -14,7 +14,7 @@
 		<div
 			class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7"
 		>
-			{#each data.results as post (post.id)}
+			{#each data.results as post}
 				<Post {post} />
 			{/each}
 		</div>

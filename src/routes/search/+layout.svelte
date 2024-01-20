@@ -24,8 +24,8 @@
 			id="query"
 			placeholder="Search HackerNews"
 			class="input input-bordered w-[90%] rounded-2xl"
-			on:input={() => setTimeout(updateSearchQuery, 200)}
-			on:keydown={() => setTimeout(updateSearchQuery, 200)}
+			on:input={() => setTimeout(updateSearchQuery, 400)}
+			on:keydown={() => setTimeout(updateSearchQuery, 400)}
 			bind:value={inputTerm}
 		/>
 	</form>
