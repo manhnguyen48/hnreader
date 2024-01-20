@@ -19,7 +19,7 @@
 			document.cookie = `theme=${value}; max-age=${60 * 60 * 24 * 365}; SameSite=Strict;`;
 			document.documentElement.dataset['theme'] = value ? 'black' : 'retro';
 			const metaThemecolor = document.querySelector('meta[name=theme-color]');
-			metaThemecolor?.setAttribute('content', value ? '#000000' : '#ffffff');
+			metaThemecolor?.setAttribute('content', value ? '#000000' : '#ece3ca');
 		});
 	});
 </script>
@@ -34,9 +34,7 @@
 			aria-label="Theme switch"
 			bind:checked={$theme}
 		/>
-		<!-- sun icon -->
 		<Sun size="20" class="swap-on" />
-		<!-- moon icon -->
 		<Moon size="20" class="swap-off" />
 	</label>
 </div>
