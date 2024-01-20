@@ -13,7 +13,7 @@ export default {
 		}
 	},
 	daisyui: {
-		themes: ['cmyk', 'black'],
+		themes: ['retro', 'black'],
 		darkTheme: ['black'],
 		styled: true,
 		base: true,
