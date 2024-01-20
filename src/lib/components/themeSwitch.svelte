@@ -24,17 +24,15 @@
 	});
 </script>
 
-<div class="dropdown dropdown-end dropdown-bottom px-1">
-	<label class="swap swap-rotate m-1">
-		<!-- this hidden checkbox controls the state -->
-		<input
-			type="checkbox"
-			id="theme-switch"
-			class="theme-controller"
-			aria-label="Theme switch"
-			bind:checked={$theme}
-		/>
-		<Sun size="20" class="swap-on" />
-		<Moon size="20" class="swap-off" />
-	</label>
-</div>
+<label class="swap swap-rotate mr-2">
+	<input
+		type="checkbox"
+		role="switch"
+		id="theme-switch"
+		class="theme-controller"
+		aria-label="Theme switch"
+		bind:checked={$theme}
+	/>
+	<Sun size="20" class="swap-on" />
+	<Moon size="20" class="swap-off" />
+</label>

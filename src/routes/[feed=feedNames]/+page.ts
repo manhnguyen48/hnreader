@@ -1,4 +1,4 @@
-import { getHNPost, getPostIds, isFulfilled } from '$lib/db';
+import { getPostIds } from '$lib/db';
 import type { PageLoad } from '../$types';
 
 export const ssr = false;
@@ -14,13 +14,8 @@ export const load: PageLoad = async ({ params }) => {
 			error: new Error('Feed not found')
 		};
 	}
-	const posts = (
-		await Promise.allSettled(snapshot.slice(0, 50).map(getHNPost)).then((result) =>
-			result.filter(isFulfilled)
-		)
-	).map((p) => p.value);
+
 	return {
-		postIds: snapshot,
-		posts: posts
+		postIds: snapshot
 	};
 };

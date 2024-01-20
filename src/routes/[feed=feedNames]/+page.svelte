@@ -5,14 +5,15 @@
 	import ScrollTop from '$lib/components/scrollTop.svelte';
 	import { getHNPost, isFulfilled } from '$lib/db';
 
-	export let data: { postIds: number[]; posts: PostData[] };
+	export let data: { postIds: number[] };
 	let posts: PostData[];
+	let postIds: number[] = [];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
 
-	const loadMore = async () => {
+	const loadMore = async (numPosts: number) => {
 		loading = true;
-		const morePostsIds = data.postIds.slice(posts.length, posts.length + 20); // Load 20 more posts
+		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
 		if (morePostsIds) {
 			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getHNPost))
 				.then((res) => res.filter(isFulfilled))
@@ -24,15 +25,14 @@
 		loading = false;
 	};
 	$: {
-		if (data && data.posts) {
-			posts = data.posts;
-		}
+		posts = [];
+		postIds = data.postIds;
 	}
 	afterUpdate(() => {
 		observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting && !loading) {
-					loadMore();
+					loadMore(20);
 				}
 			},
 			{ threshold: 1.0, rootMargin: '0px', root: null }
