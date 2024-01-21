@@ -11,3 +11,4 @@ export type PostData = {
 };
 
 export const PossibleFeeds: string[] = ['top', 'best', 'new', 'ask', 'show'];
+export const PossibleThemes: string[] = ['true', 'false'];
