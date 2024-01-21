@@ -1,7 +1,7 @@
 import { goto } from '$app/navigation';
 export function navShortcut(event: KeyboardEvent) {
-    if (event.shiftKey) {
-        event.preventDefault();
+	if (event.shiftKey) {
+		event.preventDefault();
 		let key: string = event.key.toLowerCase();
 		switch (key) {
 			case 'n':
@@ -24,11 +24,11 @@ export function navShortcut(event: KeyboardEvent) {
 }
 
 export function searchPageShortcut(event: KeyboardEvent) {
-    if (event.ctrlKey && event.key.toLowerCase() === 'k') {
-        event.preventDefault()
+	if (event.ctrlKey && event.key.toLowerCase() === 'k') {
+		event.preventDefault();
 		goto('/search');
 	}
-    if (event.ctrlKey && event.key === '<') {
-        goto('/top')
-    }
+	if (event.ctrlKey && event.key === '<') {
+		goto('/top');
+	}
 }

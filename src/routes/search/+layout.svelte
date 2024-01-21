@@ -4,7 +4,7 @@
 
 	let inputTerm: string = '';
 
-	const focusSearch = (el: HTMLInputElement) => el.focus(); 
+	const focusSearch = (el: HTMLInputElement) => el.focus();
 
 	const updateSearchQuery = () => {
 		goto(`?query=${encodeURIComponent(inputTerm.trim())}`, { keepFocus: true });
