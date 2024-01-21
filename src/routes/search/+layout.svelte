@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { ArrowLeft } from 'lucide-svelte';
+	// Debounce the input by 500ms
+	let timeout: number | undefined;
 	const handleSearch = (e: Event) => {
 		const target = e.target as HTMLInputElement;
 		const form = target.parentElement as HTMLFormElement;
-		setTimeout(() => {
+		if (timeout !== undefined) {
+			clearTimeout(timeout);
+		}
+		timeout = window.setTimeout(() => {
 			form?.requestSubmit();
 		}, 500);
 	};

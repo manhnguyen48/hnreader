@@ -36,7 +36,7 @@ const searchHN = async (searchQuery: string) => {
 		};
 	});
 };
-
+export const ssr = false;
 export const load: PageLoad = async ({ url }) => {
 	const searchQuery: string | null = url.searchParams.get('query');
 	if (searchQuery) {
