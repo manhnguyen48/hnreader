@@ -28,7 +28,4 @@ export function searchPageShortcut(event: KeyboardEvent) {
 		event.preventDefault();
 		goto('/search');
 	}
-	if (event.ctrlKey && event.key === '<') {
-		goto('/top');
-	}
 }

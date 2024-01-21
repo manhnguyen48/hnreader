@@ -1,34 +1,35 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { ArrowLeft } from 'lucide-svelte';
-
-	let inputTerm: string = '';
-
-	const focusSearch = (el: HTMLInputElement) => el.focus();
-
-	const updateSearchQuery = () => {
-		goto(`?query=${encodeURIComponent(inputTerm.trim())}`, { keepFocus: true });
+	const handleSearch = (e: Event) => {
+		const target = e.target as HTMLInputElement;
+		const form = target.parentElement as HTMLFormElement;
+		setTimeout(() => {
+			form?.requestSubmit();
+		}, 500);
 	};
+	const focusSearch = (el: HTMLInputElement) => el.focus();
 </script>
 
 <div
 	class="sticky top-0 flex w-full items-center justify-evenly backdrop-blur-md md:justify-center"
 >
-	<a href="/" aria-label="Back to Homepage" class="btn btn-ghost rounded-2xl">
+	<button
+		on:click={() => history.back()}
+		aria-label="Back to previous"
+		class="btn btn-ghost rounded-2xl"
+	>
 		<ArrowLeft strokeWidth="1.5" />
-	</a>
-	<form class="flex w-4/5 justify-center py-2">
+	</button>
+	<form class="flex w-4/5 justify-center py-2" data-sveltekit-keepfocus data-sveltekit-replacestate>
 		<input
 			type="search"
 			aria-label="search-box"
 			autocomplete="off"
 			autocorrect="false"
-			id="query"
+			name="query"
 			placeholder="Search HackerNews"
 			class="input input-bordered w-[90%] rounded-2xl"
-			on:input={() => setTimeout(updateSearchQuery, 400)}
-			on:keydown={() => setTimeout(updateSearchQuery, 400)}
-			bind:value={inputTerm}
+			on:input={handleSearch}
 			use:focusSearch
 		/>
 	</form>
