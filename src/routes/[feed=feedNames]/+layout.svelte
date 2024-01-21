@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MenuBar from '$lib/components/menuBar.svelte';
 	import { page } from '$app/stores';
+	
 </script>
 
 <!-- Reverse the layout so on smaller screens, menu bar is bottom -->

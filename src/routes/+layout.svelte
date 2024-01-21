@@ -5,8 +5,9 @@
 	import Footer from '$lib/components/footer.svelte';
 	import { Search } from 'lucide-svelte';
 	import { page } from '$app/stores';
+	import { searchPageShortcut } from '$lib/shortcuts';
 </script>
-
+<svelte:window on:keydown={searchPageShortcut}></svelte:window>
 <nav class="navbar justify-between bg-base-100 text-base-content">
 	<h1
 		class="mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 box-decoration-clone bg-clip-text font-mono text-3xl text-transparent md:text-5xl"

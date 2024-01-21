@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	const feeds: string[] = ['new', 'best', 'top', 'show', 'ask'];
+	import { navShortcut } from '$lib/shortcuts';
 </script>
 
+<svelte:window on:keydown={navShortcut} />
 <ul class="menu menu-horizontal flex justify-evenly md:justify-center">
 	{#each feeds as feedName}
 		<li>
