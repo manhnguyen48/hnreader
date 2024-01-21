@@ -3,10 +3,10 @@ import type { PageLoad } from '../$types';
 
 const client = algoliasearch('UJ5WYC0L7X', '28f0e1ec37a5e792e6845e67da5f20dd');
 const index = client.initIndex('Item_dev');
-const now: Date = new Date();
-const aMonthAgo: Date = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
 const searchHN = async (searchQuery: string) => {
+	const now: Date = new Date();
+	const aMonthAgo: Date = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 	const algoliaResp = await index.search(searchQuery, {
 		hitsPerPage: 30,
 		tagFilters: 'story',
