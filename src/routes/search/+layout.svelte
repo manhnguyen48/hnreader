@@ -4,6 +4,8 @@
 
 	let inputTerm: string = '';
 
+	const focusSearch = (el: HTMLInputElement) => el.focus(); 
+
 	const updateSearchQuery = () => {
 		goto(`?query=${encodeURIComponent(inputTerm.trim())}`, { keepFocus: true });
 	};
@@ -27,6 +29,7 @@
 			on:input={() => setTimeout(updateSearchQuery, 400)}
 			on:keydown={() => setTimeout(updateSearchQuery, 400)}
 			bind:value={inputTerm}
+			use:focusSearch
 		/>
 	</form>
 </div>
