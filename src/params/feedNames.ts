@@ -1,6 +1,6 @@
 import type { ParamMatcher } from '@sveltejs/kit';
+import { PossibleFeeds } from '$lib/types';
 
 export const match: ParamMatcher = (param) => {
-	const feeds: string[] = ['top', 'best', 'new', 'ask', 'show'];
-	return feeds.includes(param);
+	return PossibleFeeds.includes(param);
 };

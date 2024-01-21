@@ -29,6 +29,7 @@
 		postIds = data.postIds;
 	}
 	afterUpdate(() => {
+		if (observer) observer.disconnect();
 		observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting && !loading) {
@@ -43,8 +44,7 @@
 		}
 	});
 	onDestroy(() => {
-		posts = []
-		observer?.disconnect();
+		if (observer) observer.disconnect();
 	});
 </script>
 

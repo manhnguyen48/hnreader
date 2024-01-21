@@ -28,7 +28,7 @@
 	</div>
 </nav>
 
-<main class="min-h-full">
+<main class="min-h-screen">
 	<slot />
 </main>
 <Footer />

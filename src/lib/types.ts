@@ -9,3 +9,5 @@ export type PostData = {
 	type: string;
 	url: string;
 };
+
+export const PossibleFeeds: string[] = ['top', 'best', 'new', 'ask', 'show']
