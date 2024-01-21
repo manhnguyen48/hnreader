@@ -51,11 +51,13 @@
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
 			<div class="flex items-end gap-3 p-0.5 font-mono text-xs font-light">
-				<span class="flex gap-0.5"><ArrowUp size="14" strokeWidth="2" /> {post.score}</span>
-				<span class="flex gap-0.5"
+				<span class="flex items-center gap-0.5"
+					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
+				>
+				<span class="flex items-center gap-0.5"
 					><MessageSquare size="14" strokeWidth="2" /> {post.descendants ?? 0}</span
 				>
-				<span class="flex gap-0.5"
+				<span class="flex items-center gap-0.5"
 					><Clock size="14" strokeWidth="2" /> {timeDifference(post.time)}</span
 				>
 			</div>
