@@ -5,11 +5,9 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	theme: {
-		extend: {
-			fontFamily: {
-				sans: ['Inter Tight', 'ui-sans-serif', 'sans-serif', 'system-ui'],
-				mono: ['Spline Sans Mono', 'ui-monospace', 'monospace']
-			}
+		fontFamily: {
+			sans: ['"Inter Tight"', 'ui-sans-serif', 'sans-serif', 'system-ui'],
+			mono: ['"Spline Sans Mono"', 'ui-monospace', 'monospace']
 		}
 	},
 	daisyui: {
