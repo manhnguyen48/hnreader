@@ -1,6 +1,5 @@
 <script lang="ts">
 	import MenuBar from '$lib/components/menuBar.svelte';
-	import ScrollTop from '$lib/components/scrollTop.svelte';
 	import { page } from '$app/stores';
 </script>
 
@@ -13,6 +12,5 @@
 		{#key $page.params}
 			<slot />
 		{/key}
-		<ScrollTop />
 	</div>
 </div>

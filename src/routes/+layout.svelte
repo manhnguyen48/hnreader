@@ -2,6 +2,7 @@
 	import '../app.postcss';
 
 	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
+	import ScrollTop from '$lib/components/scrollTop.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import { Search } from 'lucide-svelte';
 	import { page } from '$app/stores';
@@ -32,5 +33,6 @@
 
 <main class="min-h-screen">
 	<slot />
+	<ScrollTop />
 </main>
 <Footer />
