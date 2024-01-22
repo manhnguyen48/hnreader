@@ -41,7 +41,7 @@
 			on:input={handleSearch}
 		>
 			{#each timeOptions as timeOption}
-				{#if timeOption === 'past month'}
+				{#if timeOption === 'Past Month'}
 					<option value={timeOption} selected>{timeOption}</option>
 				{:else}
 					<option value={timeOption}>{timeOption}</option>
