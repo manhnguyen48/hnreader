@@ -6,7 +6,7 @@ const index = client.initIndex('Item_dev');
 
 const getTimeFilter = (timeOption: string): [] | string[] => {
 	const now: Date = new Date();
-	switch (timeOption) {
+	switch (timeOption.toLowerCase()) {
 		case 'past month':
 			const aMonthAgo: Date = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 			return [`created_at_i>=${Math.floor(aMonthAgo.getTime() / 1000)}`];

@@ -53,7 +53,7 @@
 			name="s"
 			id="size"
 			aria-label="page size"
-			class="select select-ghost select-sm rounded-2xl capitalize focus:outline-none"
+			class="select select-ghost select-sm rounded-2xl focus:outline-none"
 			on:input={handleSearch}
 		>
 			{#each numberResults as size}
