@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowLeft } from 'lucide-svelte';
+	import { timeOptions, numberResults } from '$lib/types';
 	// Debounce the input by 500ms
 	let timeout: number | undefined;
 	const handleSearch = (e: Event) => {
@@ -10,33 +10,60 @@
 		}
 		timeout = window.setTimeout(() => {
 			form?.requestSubmit();
-		}, 500);
+		}, 400);
 	};
 	const focusSearch = (el: HTMLInputElement) => el.focus();
 </script>
 
-<div
-	class="sticky top-0 flex w-full items-center justify-evenly backdrop-blur-md md:justify-center"
->
-	<button
-		on:click={() => history.back()}
-		aria-label="Back to previous"
-		class="btn btn-ghost rounded-2xl"
+<div class="sticky top-0 flex w-full items-center backdrop-blur-md md:px-64">
+	<form
+		class="flex w-full flex-wrap items-center justify-end gap-0.5 p-2 md:flex-nowrap"
+		data-sveltekit-keepfocus
+		data-sveltekit-replacestate
 	>
-		<ArrowLeft strokeWidth="1.5" />
-	</button>
-	<form class="flex w-4/5 justify-center py-2" data-sveltekit-keepfocus data-sveltekit-replacestate>
 		<input
 			type="search"
-			aria-label="search-box"
+			aria-label="search box"
 			autocomplete="off"
 			autocorrect="false"
-			name="query"
+			name="q"
 			placeholder="Search HackerNews"
-			class="input input-bordered w-[90%] rounded-2xl"
+			class="input input-bordered w-full rounded-2xl focus:outline-none"
 			on:input={handleSearch}
 			use:focusSearch
 		/>
+		<!-- Select the time frame to filter results -->
+		<select
+			name="t"
+			id="time-frame"
+			aria-label="time frame"
+			class="select select-ghost select-sm rounded-2xl capitalize focus:outline-none"
+			on:input={handleSearch}
+		>
+			{#each timeOptions as timeOption}
+				{#if timeOption === 'past month'}
+					<option value={timeOption} selected>{timeOption}</option>
+				{:else}
+					<option value={timeOption}>{timeOption}</option>
+				{/if}
+			{/each}
+		</select>
+		<!-- Select input to adjust page size -->
+		<select
+			name="s"
+			id="size"
+			aria-label="page size"
+			class="select select-ghost select-sm rounded-2xl capitalize focus:outline-none"
+			on:input={handleSearch}
+		>
+			{#each numberResults as size}
+				{#if size === 30}
+					<option value={size} selected>{size}</option>
+				{:else}
+					<option value={size}>{size}</option>
+				{/if}
+			{/each}
+		</select>
 	</form>
 </div>
 
