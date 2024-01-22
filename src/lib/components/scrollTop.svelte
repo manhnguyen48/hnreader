@@ -1,14 +1,28 @@
 <script lang="ts">
 	import { ChevronsUp } from 'lucide-svelte';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	let showButton = false;
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
+	let scrollHandler: EventListener;
 	onMount(() => {
-		window.onscroll = () => {
-			showButton = window.scrollY > 200;
+		let lastScrollY = window.scrollY;
+		let ticking = false;
+		scrollHandler = () => {
+			lastScrollY = window.scrollY;
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					showButton = lastScrollY > 200;
+					ticking = false;
+				});
+				ticking = true;
+			}
 		};
+		window.addEventListener('scroll', scrollHandler);
+	});
+	onDestroy(() => {
+		window.removeEventListener('scroll', scrollHandler);
 	});
 </script>
 
