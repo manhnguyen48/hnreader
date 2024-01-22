@@ -5,7 +5,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const theme = event.cookies.get('theme');
 
 	if (!theme || !PossibleThemes.includes(theme)) {
-		return await resolve(event);
+		return await resolve(event, {
+			transformPageChunk: ({ html }) => {
+				return html
+					.replace('data-theme=""', 'data-theme="retro"')
+					.replace('content=""', 'content="#ece3ca"');
+			}
+		});
 	}
 
 	return await resolve(event, {
