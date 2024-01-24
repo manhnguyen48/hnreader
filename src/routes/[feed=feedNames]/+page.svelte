@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { afterUpdate, onDestroy } from 'svelte';
 	import type { PostData } from '$lib/types';
-	import Post from '$lib/components/post.svelte';
-	import ScrollTop from '$lib/components/scrollTop.svelte';
-	import { getHNPost, isFulfilled } from '$lib/db';
+	import Post from '$lib/components/Post.svelte';
+	import ScrollTop from '$lib/components/ScrollTop.svelte';
+	import { getItem, isFulfilled } from '$lib/db';
 
 	export let data: { postIds: number[] };
 	let posts: PostData[];
@@ -15,7 +15,7 @@
 		loading = true;
 		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
 		if (morePostsIds) {
-			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getHNPost))
+			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getItem))
 				.then((res) => res.filter(isFulfilled))
 				.then((fulfilled) => fulfilled.map((p) => p.value));
 			if (morePosts) {

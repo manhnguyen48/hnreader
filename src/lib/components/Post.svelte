@@ -45,8 +45,7 @@
 	</a>
 	<div class="flex items-center justify-end">
 		<a
-			href="https://news.ycombinator.com/item?id={post.id}"
-			target="_blank"
+			href="story/{post.id}"
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>

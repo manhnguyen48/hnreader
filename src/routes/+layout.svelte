@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.postcss';
 
-	import ThemeSwitch from '$lib/components/themeSwitch.svelte';
-	import ScrollTop from '$lib/components/scrollTop.svelte';
-	import Footer from '$lib/components/footer.svelte';
+	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
+	import ScrollTop from '$lib/components/ScrollTop.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import { Search } from 'lucide-svelte';
 	import { page } from '$app/stores';
 	import { searchPageShortcut } from '$lib/shortcuts';
