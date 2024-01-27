@@ -2,7 +2,6 @@
 	import { afterUpdate, onDestroy } from 'svelte';
 	import type { PostData } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
-	import ScrollTop from '$lib/components/ScrollTop.svelte';
 	import { getItem, isFulfilled } from '$lib/db';
 
 	export let data: { postIds: number[] };

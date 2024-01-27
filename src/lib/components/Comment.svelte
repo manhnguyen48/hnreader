@@ -15,7 +15,7 @@
 				<span>&#183</span>
 				<span>{timeDifference(comment.time)} ago</span>
 			</div>
-			<div class="prose prose-base">{@html sanitiseHTML(comment.text)}</div>
+			<div class="prose prose-base text-wrap break-words">{@html sanitiseHTML(comment.text)}</div>
 		{/if}
 	</article>
 	<!-- TODO: onclick event to load more comments -->

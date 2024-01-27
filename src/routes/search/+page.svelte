@@ -2,7 +2,6 @@
 	import { type PostData } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
 	import ErrorPage from '$lib/components/ErrorPage.svelte';
-	import ScrollTop from '$lib/components/ScrollTop.svelte';
 
 	export let data: { results: PostData[] };
 </script>

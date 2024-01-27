@@ -24,7 +24,7 @@
 	</header>
 	{#if post.text}
 		<details class="mt-4">
-			<summary class="btn btn-sm cursor-pointer font-normal"> &#128898; Details </summary>
+			<summary class="btn btn-sm cursor-pointer font-normal"> Details </summary>
 			<p
 				class="prose prose-base my-2 border border-transparent border-t-neutral py-2 xl:min-w-[120ch]"
 			>
