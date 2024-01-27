@@ -21,7 +21,6 @@
 	<!-- TODO: onclick event to load more comments -->
 	{#if comment.kids}
 		<button class="btn btn-sm ml-4 mt-8 rounded-xl font-normal">
-			&#128898;
 			{comment.kids.length}
 			more repl{comment.kids.length > 1 ? 'ies' : 'y'}
 		</button>
