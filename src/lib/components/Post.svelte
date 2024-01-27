@@ -27,7 +27,7 @@
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<PostStats {...post} />
+			<PostStats score={post.score} descendants={post.descendants} time={post.time} />
 		</a>
 	</div>
 </div>

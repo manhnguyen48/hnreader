@@ -5,9 +5,9 @@
 	export let post: PostData;
 </script>
 
-<article class="min-w-full rounded-xl border border-neutral p-3 shadow-xl 2xl:min-w-[200ch]">
+<article class="min-w-full rounded-xl border border-neutral p-3 shadow-xl">
 	<header class="flex flex-col gap-1">
-		<div class="flex w-full flex-col items-start justify-between gap-2 md:flex-row">
+		<div class="flex w-full flex-col items-start justify-between gap-2 md:flex-row md:gap-44">
 			<a
 				href={post.url ? post.url : `#`}
 				target={post.url ? '_blank' : '_self'}
@@ -19,7 +19,7 @@
 					{post.url ? `(${new URL(post.url).hostname})` : ''}
 				</span>
 			</a>
-			<PostStats {...post} />
+			<PostStats score={post.score} descendants={post.descendants} time={post.time} />
 		</div>
 	</header>
 	{#if post.text}
