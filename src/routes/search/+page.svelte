@@ -18,6 +18,5 @@
 				<Post {post} />
 			{/each}
 		</div>
-		<ScrollTop />
 	{/if}
 {/if}

@@ -2,31 +2,8 @@
 	import type { PostData } from '$lib/types';
 	import { scale } from 'svelte/transition';
 	import { expoIn, expoOut } from 'svelte/easing';
-	import { Clock, MessageSquare, ArrowUp } from 'lucide-svelte';
-
+	import PostStats from './PostStats.svelte';
 	export let post: PostData;
-	function timeDifference(previous: number): string {
-		const sPerMinute: number = 60;
-		const sPerHour: number = sPerMinute * 60;
-		const sPerDay: number = sPerHour * 24;
-		const sPerMonth: number = sPerDay * 30;
-		const sPerYear: number = sPerDay * 365;
-		const elapsed: number = Date.now() / 1000 - previous;
-
-		if (elapsed < sPerMinute) {
-			return Math.round(elapsed / 1000) + 's';
-		} else if (elapsed < sPerHour) {
-			return Math.round(elapsed / sPerMinute) + 'm';
-		} else if (elapsed < sPerDay) {
-			return Math.round(elapsed / sPerHour) + 'h';
-		} else if (elapsed < sPerMonth) {
-			return Math.round(elapsed / sPerDay) + 'D';
-		} else if (elapsed < sPerYear) {
-			return Math.round(elapsed / sPerMonth) + 'M';
-		} else {
-			return Math.round(elapsed / sPerYear) + 'Y';
-		}
-	}
 </script>
 
 <div
@@ -35,8 +12,8 @@
 	out:scale={{ duration: 500, easing: expoIn }}
 >
 	<a
-		href={post.url ? post.url : `https://news.ycombinator.com/item?id=${post.id}`}
-		target="_blank"
+		href={post.url ? post.url : `/story/${post.id}`}
+		target={post.url ? '_blank' : '_self'}
 		rel="noopener noreferrer"
 		class="px-1 underline-offset-4 visited:text-indigo-400 hover:underline"
 	>
@@ -45,21 +22,12 @@
 	</a>
 	<div class="flex items-center justify-end">
 		<a
-			href="story/{post.id}"
+			href="/story/{post.id}"
+			data-sveltekit-preload-data="hover"
 			rel="noopener noreferrer"
 			class="rounded-md hover:bg-neutral hover:text-neutral-content"
 		>
-			<div class="flex items-end gap-3 p-0.5 font-mono text-xs font-light">
-				<span class="flex items-center gap-0.5"
-					><ArrowUp size="14" strokeWidth="2" /> {post.score}</span
-				>
-				<span class="flex items-center gap-0.5"
-					><MessageSquare size="14" strokeWidth="2" /> {post.descendants ?? 0}</span
-				>
-				<span class="flex items-center gap-0.5"
-					><Clock size="14" strokeWidth="2" /> {timeDifference(post.time)}</span
-				>
-			</div>
+			<PostStats {...post} />
 		</a>
 	</div>
 </div>

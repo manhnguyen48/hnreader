@@ -15,9 +15,9 @@
 		loading = true;
 		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
 		if (morePostsIds) {
-			const morePosts: PostData[] = await Promise.allSettled(morePostsIds.map(getItem))
-				.then((res) => res.filter(isFulfilled))
-				.then((fulfilled) => fulfilled.map((p) => p.value));
+			const morePosts: PostData[] = (await Promise.allSettled(morePostsIds.map(getItem)))
+				.filter(isFulfilled)
+				.map((result) => result.value);
 			if (morePosts) {
 				posts = [...posts, ...morePosts];
 			}
@@ -60,4 +60,3 @@
 		</div>
 	{/if}
 </div>
-<ScrollTop />

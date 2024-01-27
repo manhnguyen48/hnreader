@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
+import type { Comment } from '$lib/types';
 
 const firebaseConfig = {
 	databaseURL: 'https://hacker-news.firebaseio.com'
@@ -37,27 +38,15 @@ export const getItem = async (id: number) => {
 	}
 };
 // Recursive function to get comments of a post
-export const getComments = async (kids: number[]): Promise<any[]> => {
+export const getComments = async (kids: number[]): Promise<[] | Comment[]> => {
 	if (!kids) {
-	  return [];
+		return [];
 	}
-  
-	const commentsPromises = kids.map(getItem);
-	const commentsResults = await Promise.allSettled(commentsPromises);
-  
-	const comments = commentsResults
-	  .filter(isFulfilled)
-	  .map(result => result.value);
-  
-	for (const comment of comments) {
-	  if (comment.kids) {
-		comment.kids = await getComments(comment.kids);
-	  }
-	}
-  
+	const comments = (await Promise.allSettled(kids.map(getItem)))
+		.filter(isFulfilled)
+		.map((result) => result.value);
 	return comments;
-  };
-  
+};
 
 export const isFulfilled = <PostData>(
 	p: PromiseSettledResult<PostData>
