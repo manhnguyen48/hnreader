@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MenuBar from '$lib/components/menuBar.svelte';
+	import MenuBar from '$lib/components/MenuBar.svelte';
 	import { page } from '$app/stores';
 </script>
 

@@ -12,7 +12,6 @@
 			form?.requestSubmit();
 		}, 400);
 	};
-	const focusSearch = (el: HTMLInputElement) => el.focus();
 </script>
 
 <div class="sticky top-0 flex w-full items-center backdrop-blur-md md:px-64">
@@ -21,6 +20,7 @@
 		data-sveltekit-keepfocus
 		data-sveltekit-replacestate
 	>
+		<!-- svelte-ignore a11y-autofocus -->
 		<input
 			type="search"
 			aria-label="search box"
@@ -30,7 +30,7 @@
 			placeholder="Search HackerNews"
 			class="input input-bordered w-full rounded-2xl focus:outline-none"
 			on:input={handleSearch}
-			use:focusSearch
+			autofocus
 		/>
 		<!-- Select the time frame to filter results -->
 		<select
