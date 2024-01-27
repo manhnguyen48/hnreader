@@ -15,12 +15,12 @@
 				class="underline-offset-4 visited:text-indigo-400 hover:underline"
 			>
 				<h1 class="text-wrap text-xl">{post.title}</h1>
+				<span class="text-xs font-light">
+					{post.url ? `(${new URL(post.url).hostname})` : ''}
+				</span>
 			</a>
 			<PostStats {...post} />
 		</div>
-		<span class="text-xs font-light">
-			{post.url ? `(${new URL(post.url).hostname})` : ''}
-		</span>
 	</header>
 	{#if post.text}
 		<details class="mt-4">
