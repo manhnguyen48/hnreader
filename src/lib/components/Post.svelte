@@ -25,7 +25,7 @@
 			href="/story/{post.id}"
 			data-sveltekit-preload-data="hover"
 			rel="noopener noreferrer"
-			class="rounded-md hover:bg-neutral hover:text-neutral-content"
+			class="rounded-md p-1 hover:bg-neutral hover:text-neutral-content"
 		>
 			<PostStats score={post.score} descendants={post.descendants} time={post.time} />
 		</a>
