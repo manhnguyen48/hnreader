@@ -16,7 +16,7 @@
 		}
 		theme = writable(themePreference);
 		theme.subscribe((value) => {
-			document.cookie = `theme=${value}; max-age=${60 * 60 * 24 * 365}; SameSite=Strict;`;
+			document.cookie = `theme=${value}; max-age=${60 * 60 * 24 * 365}; SameSite=Strict; Path="/"`;
 			document.documentElement.dataset['theme'] = value ? 'black' : 'retro';
 			const metaThemecolor = document.querySelector('meta[name=theme-color]');
 			metaThemecolor?.setAttribute('content', value ? '#000000' : '#ece3ca');
