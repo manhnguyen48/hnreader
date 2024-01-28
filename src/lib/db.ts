@@ -42,7 +42,7 @@ export const getComments = async (kids: number[]): Promise<[] | HNItem[]> => {
 	if (!kids) {
 		return [];
 	}
-	const comments = (await Promise.allSettled(kids.map(getItem)))
+	const comments: HNItem[] = (await Promise.allSettled(kids.map(getItem)))
 		.filter(isFulfilled)
 		.map((result) => result.value);
 	return comments;
