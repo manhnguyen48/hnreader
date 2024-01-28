@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
-import type { Comment } from '$lib/types';
+import type { HNItem } from '$lib/types';
 
 const firebaseConfig = {
 	databaseURL: 'https://hacker-news.firebaseio.com'
@@ -37,8 +37,8 @@ export const getItem = async (id: number) => {
 		return null;
 	}
 };
-// Recursive function to get comments of a post
-export const getComments = async (kids: number[]): Promise<[] | Comment[]> => {
+// Function to get comments of a post
+export const getComments = async (kids: number[]): Promise<[] | HNItem[]> => {
 	if (!kids) {
 		return [];
 	}
@@ -48,6 +48,6 @@ export const getComments = async (kids: number[]): Promise<[] | Comment[]> => {
 	return comments;
 };
 
-export const isFulfilled = <PostData>(
-	p: PromiseSettledResult<PostData>
-): p is PromiseFulfilledResult<PostData> => p.status === 'fulfilled';
+export const isFulfilled = <HNItem>(
+	p: PromiseSettledResult<HNItem>
+): p is PromiseFulfilledResult<HNItem> => p.status === 'fulfilled';

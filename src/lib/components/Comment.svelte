@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { Comment } from '$lib/types';
+	import type { HNItem } from '$lib/types';
 	import { timeDifference } from '$lib/utils';
 	import { sanitiseHTML } from '$lib/utils';
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 	import { getComments } from '$lib/db';
 	import { ChevronsDown, ChevronsUp } from 'lucide-svelte';
-	export let comment: Comment;
+	export let comment: HNItem;
 	export let offset: number = 0;
 
-	let childComments: [] | Comment[] = [];
+	let childComments: [] | HNItem[] = [];
 	async function getChildComments() {
 		childComments = await getComments(comment.kids);
 	}

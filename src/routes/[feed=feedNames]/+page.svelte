@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { afterUpdate, onDestroy } from 'svelte';
-	import type { PostData } from '$lib/types';
+	import type { HNItem } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
 	import { getItem, isFulfilled } from '$lib/db';
 
 	export let data: { postIds: number[] };
-	let posts: PostData[];
+	let posts: HNItem[];
 	let postIds: number[] = [];
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
@@ -14,7 +14,7 @@
 		loading = true;
 		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
 		if (morePostsIds) {
-			const morePosts: PostData[] = (await Promise.allSettled(morePostsIds.map(getItem)))
+			const morePosts: HNItem[] = (await Promise.allSettled(morePostsIds.map(getItem)))
 				.filter(isFulfilled)
 				.map((result) => result.value);
 			if (morePosts) {

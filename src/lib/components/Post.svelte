@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { PostData } from '$lib/types';
+	import type { HNItem } from '$lib/types';
 	import { scale } from 'svelte/transition';
 	import { expoIn, expoOut } from 'svelte/easing';
 	import PostStats from './PostStats.svelte';
-	export let post: PostData;
+	export let post: HNItem;
 </script>
 
 <div

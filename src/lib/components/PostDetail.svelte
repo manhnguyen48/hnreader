@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { PostData } from '$lib/types';
+	import type { HNItem } from '$lib/types';
 	import { sanitiseHTML } from '$lib/utils';
 	import PostStats from './PostStats.svelte';
-	export let post: PostData;
+	export let post: HNItem;
 </script>
 
 <article class="min-w-full rounded-xl border border-neutral p-3 shadow-xl">

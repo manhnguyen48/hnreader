@@ -1,24 +1,19 @@
-export type PostData = {
+export type HNItem = {
 	id: number;
+	deleted: boolean;
+	type: 'story' | 'comment' | 'job' | 'poll' | 'pollopt';
 	by: string;
-	descendants: number;
-	text?: string;
-	kids: number[];
-	score: number;
 	time: number;
-	title: string;
-	type: string;
-	url: string;
-};
-
-export type Comment = {
-	by?: string;
-	id: number;
-	kids: [] | number[];
-	parent: number;
 	text: string;
-	time: number;
-	type: string;
+	dead: boolean;
+	parent: number;
+	poll: number;
+	kids: number[];
+	url: string;
+	score: number;
+	title: string;
+	parts: number[];
+	descendants: number;
 };
 
 export const PossibleFeeds: string[] = ['top', 'best', 'new', 'ask', 'show'];

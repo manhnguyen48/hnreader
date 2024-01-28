@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { type PostData } from '$lib/types';
+	import { type HNItem } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
 	import ErrorPage from '$lib/components/ErrorPage.svelte';
 
-	export let data: { results: PostData[] };
+	export let data: { results: HNItem[] };
 </script>
 
 {#if data.results}
