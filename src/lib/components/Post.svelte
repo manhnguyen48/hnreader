@@ -8,8 +8,8 @@
 
 <div
 	class="post"
-	in:scale={{ duration: 500, delay: 500, easing: expoOut }}
-	out:scale={{ duration: 500, easing: expoIn }}
+	in:scale={{ duration: 200, delay: 300, easing: expoOut }}
+	out:scale={{ duration: 200, easing: expoIn }}
 >
 	<a
 		href={post.url ? post.url : `/story/${post.id}`}
