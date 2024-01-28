@@ -1,0 +1,38 @@
+{
+	"name": "Hacker News Reader App",
+	"short_name": "HN Reader",
+	"start_url": "/top",
+	"display": "standalone",
+	"theme_color": "#ece3ca",
+	"description": "Simple Hacker News Reader App",
+	"icons": [
+		{
+			"src": "/favicon/logo.svg",
+			"type": "image/svg+xml",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/favicon/pwa-64x64.png",
+			"type": "image/png",
+			"sizes": "64x64"
+		},
+		{
+			"src": "/favicon/pwa-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon/pwa-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon/maskable-icon-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		}
+	]
+}
