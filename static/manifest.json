@@ -5,9 +5,9 @@
 	"display": "standalone",
 	"theme_color": "#ece3ca",
 	"description": "Simple Hacker News Reader App",
-	"lang": "en", 
+	"lang": "en",
 	"orientation": "portrait",
-	"dir": "ltr", 
+	"dir": "ltr",
 	"icons": [
 		{
 			"src": "/favicon/logo.svg",
@@ -37,53 +37,53 @@
 			"sizes": "512x512",
 			"purpose": "maskable"
 		}
-	], 
-	"screenshots" : [
+	],
+	"screenshots": [
 		{
-			"src": "/screenshots/desktop-1440x900.png", 
-			"sizes": "1440x900", 
-			"type": "image/png"
-		}, 
-		{
-			"src": "/screenshots/desktop-1440x900-dark.png", 
-			"sizes": "1440x900", 
-			"type": "image/png"
-		}, 
-		{
-			"src": "/screenshots/mobile-430x932.png", 
-			"sizes": "430x932", 
+			"src": "/screenshots/desktop-1440x900.png",
+			"sizes": "1440x900",
 			"type": "image/png"
 		},
 		{
-			"src": "/screenshots/mobile-430x932-dark.png", 
-			"sizes": "430x932", 
+			"src": "/screenshots/desktop-1440x900-dark.png",
+			"sizes": "1440x900",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/mobile-430x932.png",
+			"sizes": "430x932",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/mobile-430x932-dark.png",
+			"sizes": "430x932",
 			"type": "image/png"
 		}
 	],
 	"shortcuts": [
-		{	
-			"name": "Search HN", 
-			"url": "/search", 
+		{
+			"name": "Search HN",
+			"url": "/search",
 			"description": "What was that post you saw?"
-		}, 
+		},
 		{
-			"name": "Best HN", 
-			"url": "/best", 
+			"name": "Best HN",
+			"url": "/best",
 			"description": "Best of HN recently"
-		}, 
+		},
 		{
-			"name": "Show HN", 
-			"url": "/show", 
+			"name": "Show HN",
+			"url": "/show",
 			"description": "Brag section"
-		}, 
+		},
 		{
-			"name": "Ask HN", 
-			"url": "/ask", 
+			"name": "Ask HN",
+			"url": "/ask",
 			"description": "No dumb question"
-		}, 
+		},
 		{
-			"name": "New HN", 
-			"url": "/new", 
+			"name": "New HN",
+			"url": "/new",
 			"description": "Only when you're bored"
 		}
 	]
