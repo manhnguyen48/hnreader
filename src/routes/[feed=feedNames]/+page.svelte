@@ -2,9 +2,9 @@
 	import { afterUpdate, onDestroy } from 'svelte';
 	import type { HNItem } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
-	import { getItem } from '$lib/db';
+	import { getItem, isFulfilled } from '$lib/db';
 
-	export let data: { postIds: number[]; initialPosts: HNItem[] };
+	export let data: { postIds: number[] };
 	let posts: HNItem[];
 	let postIds: number[] = [];
 	let loading = false;
@@ -14,7 +14,9 @@
 		loading = true;
 		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
 		if (morePostsIds) {
-			const morePosts = await Promise.all(morePostsIds.map(getItem));
+			const morePosts: HNItem[] = (await Promise.allSettled(morePostsIds.map(getItem)))
+				.filter(isFulfilled)
+				.map((result) => result.value);
 			if (morePosts) {
 				posts = [...posts, ...morePosts];
 			}
@@ -22,7 +24,7 @@
 		loading = false;
 	};
 	$: {
-		posts = data.initialPosts;
+		posts = [];
 		postIds = data.postIds;
 	}
 	afterUpdate(() => {
