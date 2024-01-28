@@ -1,4 +1,5 @@
-import { getPostIds } from '$lib/db';
+import { getPostIds, getItem } from '$lib/db';
+import type { HNItem } from '$lib/types';
 import type { PageLoad } from '../$types';
 
 interface RouteParams {
@@ -8,17 +9,20 @@ interface RouteParams {
 export const ssr = false;
 export const load: PageLoad = async ({ params }) => {
 	const feed: string = `${(params as RouteParams).feed}stories`;
-	let snapshot;
-	snapshot = await getPostIds(feed);
+	let postIds: number[];
+	postIds = await getPostIds(feed);
 
-	if (!snapshot) {
+	if (!postIds) {
 		return {
 			status: 404,
 			error: new Error('Feed not found')
 		};
 	}
+	// Get the first 50 posts to load first
+	const initialPosts: HNItem[] = await Promise.all(postIds.slice(0, 50).map(getItem));
 
 	return {
-		postIds: snapshot
+		postIds: postIds,
+		initialPosts: initialPosts
 	};
 };
