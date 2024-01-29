@@ -19,7 +19,7 @@
 					{post.url ? `(${new URL(post.url).hostname})` : ''}
 				</span>
 			</a>
-			<PostStats score={post.score} descendants={post.descendants} time={post.time} />
+			<PostStats score={post.score} descendants={post.descendants} time={post.time} by={post.by} />
 		</div>
 	</header>
 	{#if post.text}
