@@ -10,7 +10,8 @@
 
 <div class="flex items-center gap-3 font-mono text-xs font-light">
 	{#if by}
-		<span class="flex items-center rounded-md bg-neutral p-1 text-neutral-content">by: {by}</span>
+		<span class="flex items-center rounded-md bg-neutral p-1 text-neutral-content">{by}</span>
+		<span>&#183</span>
 	{/if}
 	<span class="flex items-center gap-0.5"><ArrowUp size="14" strokeWidth="2" /> {score}</span>
 	<span class="flex items-center gap-0.5"
