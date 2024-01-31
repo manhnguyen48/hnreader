@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { afterUpdate, onDestroy } from 'svelte';
+	import { afterUpdate, onDestroy, onMount } from 'svelte';
 	import type { HNItem } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
 	import { getItem, isFulfilled } from '$lib/db';
@@ -35,13 +35,16 @@
 					loadMore(20);
 				}
 			},
-			{ threshold: 1.0, rootMargin: '250px', root: null }
+			{ rootMargin: '350px' }
 		);
 		const loadMoreEl = document.querySelector('#load-more');
 		if (loadMoreEl) {
 			observer.observe(loadMoreEl);
+		} else {
+			observer.disconnect();
 		}
 	});
+	onMount(() => loadMore(30));
 	onDestroy(() => {
 		if (observer) observer.disconnect();
 	});
@@ -50,7 +53,7 @@
 <div
 	class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-9"
 >
-	{#each posts as post}
+	{#each posts as post (post.id)}
 		<Post {post}></Post>
 	{/each}
 	{#if posts.length < data.postIds.length}

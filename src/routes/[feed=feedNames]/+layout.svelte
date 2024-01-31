@@ -9,6 +9,8 @@
 		<MenuBar />
 	</div>
 	<div class="min-h-screen flex-1 overflow-auto">
-		<slot />
+		{#key $page.params}
+			<slot />
+		{/key}
 	</div>
 </div>
