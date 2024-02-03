@@ -6,6 +6,9 @@
 	export let data: { results: HNItem[] };
 </script>
 
+<svelte:head>
+	<title>Search Hacker News</title>
+</svelte:head>
 {#if data.results}
 	{#if data.results.length < 1}
 		<ErrorPage errorText="No results found" />

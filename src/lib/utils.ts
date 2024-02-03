@@ -23,3 +23,7 @@ export function timeDifference(previous: number): string {
 	}
 	return 'now';
 }
+
+export function capitalise(s: string): string {
+	return s[0].toUpperCase() + s.slice(1);
+}
