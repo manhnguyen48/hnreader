@@ -4,6 +4,9 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>{data.post.title}</title>
+</svelte:head>
 <div class="flex w-full flex-col items-start justify-center gap-8 md:px-6">
 	<!-- Possibly get a comment instead of post -->
 	{#if data.post.type === 'comment'}

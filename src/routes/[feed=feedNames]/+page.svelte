@@ -3,6 +3,8 @@
 	import type { HNItem } from '$lib/types';
 	import Post from '$lib/components/Post.svelte';
 	import { getItem, isFulfilled } from '$lib/db';
+	import { page } from '$app/stores';
+	import { capitalise } from '$lib/utils';
 
 	export let data: { postIds: number[] };
 	let posts: HNItem[];
@@ -50,6 +52,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{capitalise($page.params.feed)} HN Stories</title>
+</svelte:head>
 <div
 	class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-9"
 >
