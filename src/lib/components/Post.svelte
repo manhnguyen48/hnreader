@@ -15,7 +15,7 @@
 		href={post.url ? post.url : `/story/${post.id}`}
 		target={post.url ? '_blank' : '_self'}
 		rel="noopener noreferrer"
-		class="px-1 underline-offset-4 visited:text-indigo-400 hover:underline"
+		class="px-1 underline-offset-4 visited:text-indigo-500 hover:underline"
 	>
 		<header class="text-base">{post.title}</header>
 		<span class="text-xs font-light">{post.url ? `(${new URL(post.url).hostname})` : ''}</span>
@@ -25,7 +25,7 @@
 			href="/story/{post.id}"
 			data-sveltekit-preload-data="hover"
 			rel="noopener noreferrer"
-			class="rounded-md p-1 hover:bg-neutral hover:text-neutral-content"
+			class="rounded-md p-1 visited:text-indigo-500 hover:bg-neutral hover:text-neutral-content"
 		>
 			<PostStats score={post.score} descendants={post.descendants} time={post.time} />
 		</a>
