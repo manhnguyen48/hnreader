@@ -1,6 +1,12 @@
 import type { Handle } from '@sveltejs/kit';
 import { PossibleThemes } from '$lib/types';
 
+/**
+ * Handles server side rendering for setting the theme cookie.
+ * Checks if a 'theme' cookie is set, and if not defaults to the 'retro' theme.
+ * If the theme is invalid, also defaults to 'retro'.
+ * Returns the SvelteKit response, transforming the HTML to set the theme colors.
+ */
 export const handle: Handle = async ({ event, resolve }) => {
 	const theme = event.cookies.get('theme');
 

@@ -3,6 +3,16 @@
 	import { onMount } from 'svelte';
 	import { Sun, Moon } from 'lucide-svelte';
 	let theme: Writable<boolean>; // true if dark, false if light
+	/**
+	 * Initialize theme preference on mount:
+	 * - Check if user has set a theme cookie. If so, use that.
+	 * - Otherwise, use the system preference for dark mode.
+	 * - Set the theme store with the initial value.
+	 * - Subscribe to theme store changes to:
+	 *   - Set a long-lived theme cookie.
+	 *   - Update document theme class.
+	 *   - Update meta theme-color tag.
+	 */
 	onMount(() => {
 		const preferDarkmode =
 			window.matchMedia && window.matchMedia('(prefer-color-scheme: dark)').matches;

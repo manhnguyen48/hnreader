@@ -6,6 +6,12 @@ interface RouteParams {
 }
 
 export const ssr = false;
+/**
+ * Server route to load posts for a feed.
+ *
+ * Loads post IDs for the given feed from the database.
+ * Handles 404 if feed not found.
+ */
 export const load: PageLoad = async ({ params }) => {
 	const feed: string = `${(params as RouteParams).feed}stories`;
 	let snapshot;

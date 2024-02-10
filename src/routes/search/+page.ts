@@ -4,6 +4,10 @@ import type { PageLoad } from '../$types';
 const client = algoliasearch('UJ5WYC0L7X', '28f0e1ec37a5e792e6845e67da5f20dd');
 const index = client.initIndex('Item_dev');
 
+/**
+ * Returns a filter for Algolia based on a time option string.
+ * Generates a filter for the past month or past week relative to the current date.
+ */
 const getTimeFilter = (timeOption: string): [] | string[] => {
 	const now: Date = new Date();
 	switch (timeOption.toLowerCase()) {
@@ -18,6 +22,14 @@ const getTimeFilter = (timeOption: string): [] | string[] => {
 	}
 };
 
+/**
+ * Searches Algolia index for given query and options.
+ *
+ * @param searchQuery - Search query string
+ * @param timeOption - Time filter option ('past week', 'past month', etc)
+ * @param size - Number of hits to return
+ * @returns Promise resolving to array of search result objects
+ */
 const searchHN = async (searchQuery: string, timeOption: string, size: string) => {
 	const algoliaResp = await index.search(searchQuery, {
 		hitsPerPage: parseInt(size),
@@ -49,6 +61,13 @@ const searchHN = async (searchQuery: string, timeOption: string, size: string) =
 	});
 };
 export const ssr = false;
+/**
+ * Page load handler for search page.
+ *
+ * Loads search results from Algolia based on query parameters.
+ *
+ * @param context - Page load context
+ */
 export const load: PageLoad = async ({ url }) => {
 	const searchQuery: string | null = url.searchParams.get('q');
 	const timeFilter: string | null = url.searchParams.get('t');

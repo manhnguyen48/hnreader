@@ -12,6 +12,12 @@
 	let loading = false;
 	let observer: IntersectionObserver | undefined;
 
+	/**
+	 * Loads more posts by fetching additional post IDs from the server.
+	 * Fetches full post data for the additional IDs via getItem(), filters out rejected promises,
+	 * and concatenates the additional posts onto the existing posts array.
+	 * Handles loading state before and after the async operation.
+	 */
 	const loadMore = async (numPosts: number) => {
 		loading = true;
 		const morePostsIds = postIds.slice(posts.length, posts.length + numPosts);
@@ -29,6 +35,11 @@
 		posts = [];
 		postIds = data.postIds;
 	}
+	/**
+	 * After the component updates, set up an IntersectionObserver to watch when the
+	 * "load more" element comes into view. When it does, load another batch of posts.
+	 * Disconnect the observer when unmounted to avoid memory leaks.
+	 */
 	afterUpdate(() => {
 		if (observer) observer.disconnect();
 		observer = new IntersectionObserver(

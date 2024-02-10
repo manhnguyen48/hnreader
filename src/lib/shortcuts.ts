@@ -1,4 +1,9 @@
 import { goto } from '$app/navigation';
+/**
+ * Handles keyboard shortcuts when shift key is pressed.
+ * Checks for specific keys pressed and navigates to the
+ * associated route. Prevents default browser behavior.
+ */
 export function navShortcut(event: KeyboardEvent) {
 	if (event.shiftKey) {
 		event.preventDefault();
@@ -23,6 +28,11 @@ export function navShortcut(event: KeyboardEvent) {
 	}
 }
 
+/**
+ * Handles the keyboard shortcut to navigate to the search page.
+ * When the user presses Ctrl+K, it will prevent the default browser behavior,
+ * and navigate to the /search route instead.
+ */
 export function searchPageShortcut(event: KeyboardEvent) {
 	if (event.ctrlKey && event.key.toLowerCase() === 'k') {
 		event.preventDefault();

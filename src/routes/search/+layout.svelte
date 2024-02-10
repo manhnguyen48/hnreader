@@ -2,6 +2,11 @@
 	import { timeOptions, numberResults } from '$lib/types';
 	// Debounce the input by 500ms
 	let timeout: number | undefined;
+	/**
+	 * Handles searching when the user types in the search input.
+	 * Debounces the input by 400ms to avoid too many requests.
+	 * Clears the timeout if a new input comes in before the timeout finishes.
+	 */
 	const handleSearch = (e: Event) => {
 		const target = e.target as HTMLInputElement;
 		const form = target.parentElement as HTMLFormElement;
