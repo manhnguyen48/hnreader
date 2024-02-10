@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { type HNItem } from '$lib/types';
+	import type { PageData } from './$types';
 	import Post from '$lib/components/Post.svelte';
 	import ErrorPage from '$lib/components/ErrorPage.svelte';
 
-	export let data: { results: HNItem[] };
+	export let data: PageData;
 </script>
 
 <svelte:head>

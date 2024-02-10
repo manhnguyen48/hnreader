@@ -1,7 +1,8 @@
 <script lang="ts">
 	import PostDetail from '$lib/components/PostDetail.svelte';
 	import Comment from '$lib/components/Comment.svelte';
-	export let data;
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
 
 <svelte:head>

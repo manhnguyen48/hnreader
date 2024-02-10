@@ -11,7 +11,7 @@
 
 	let childComments: [] | HNItem[] = [];
 	async function getChildComments() {
-		childComments = await getComments(comment.kids);
+		childComments = await getComments(comment.kids ? comment.kids : []);
 	}
 	function collapse() {
 		childComments = [];
@@ -31,7 +31,7 @@
 			>
 				<span>{comment.by}</span>
 				<span>&#183</span>
-				<span>{timeDifference(comment.time)} ago</span>
+				<span>{comment.time ? timeDifference(comment.time) : ''} ago</span>
 			</div>
 			<div class="prose prose-base text-wrap break-words">
 				{@html sanitiseHTML(comment.text)}

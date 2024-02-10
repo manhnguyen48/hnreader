@@ -11,12 +11,11 @@ export function sanitiseHTML(input: string): string {
 	return output;
 }
 
-
 /**
  * Calculates a human readable time difference string from a provided previous timestamp.
  * @param previous - Unix seconds timestamps
  * @return A string representing the time elapsed since the provided previous timestamp.
- * 
+ *
  * Converts the time elapsed since the provided previous timestamp into the largest unit
  * that results in a non-zero value, with units going from seconds to minutes to hours to
  * days to months to years.

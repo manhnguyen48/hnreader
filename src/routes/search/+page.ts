@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch';
 import type { PageLoad } from '../$types';
+import type { HNItem } from '$lib/types';
 
 const client = algoliasearch('UJ5WYC0L7X', '28f0e1ec37a5e792e6845e67da5f20dd');
 const index = client.initIndex('Item_dev');
