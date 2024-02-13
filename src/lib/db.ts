@@ -10,8 +10,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
-const db = getDatabase(app);
-
+const dbRef = ref(getDatabase(app));
 // Function to get an array of post IDs in a feed
 /**
  * Fetches post IDs for a given feed from the Firebase Realtime Database.
@@ -22,7 +21,7 @@ const db = getDatabase(app);
 export const getPostIds = async (feed: string) => {
 	let snapshot;
 	try {
-		snapshot = await get(child(ref(db), `v0/${feed}`));
+		snapshot = await get(child(dbRef, `v0/${feed}`));
 	} catch (error) {
 		console.error('Failed to get feed:', error);
 		return null;
@@ -33,6 +32,11 @@ export const getPostIds = async (feed: string) => {
 		return null;
 	}
 };
+interface PostCacheEntry {
+	post: HNItem;
+	timestamp: number;
+}
+const postStore: { [key: number]: PostCacheEntry } = {};
 // Function to get a single item
 /**
  * Fetches a single Hacker News item by its numeric ID.
@@ -41,13 +45,16 @@ export const getPostIds = async (feed: string) => {
  * @returns The item data, or null if not found.
  */
 export const getItem = async (id: number) => {
-	try {
-		const snapshot = await get(child(ref(db), `v0/item/${id}`));
-		return snapshot.val();
-	} catch (error) {
-		console.error(`Failed to get post ${id}`, error);
-		return null;
+	// Check cache
+	if (postStore[id] && Date.now() - postStore[id].timestamp < 5 * 60 * 1000) {
+		return postStore[id].post;
 	}
+	let snapshot = await get(child(dbRef, `v0/item/${id}`));
+	postStore[id] = {
+		post: snapshot.val(),
+		timestamp: Date.now()
+	};
+	return postStore[id].post;
 };
 // Function to get comments of a post
 /**
