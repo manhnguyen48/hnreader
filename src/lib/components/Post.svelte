@@ -14,7 +14,7 @@
 	<a
 		href={post.url ? post.url : `/story/${post.id}`}
 		target={post.url ? '_blank' : '_self'}
-		rel="noopener noreferrer"
+		rel="noopener noreferrer {post.url ? '' : 'external'}"
 		class="px-1 underline-offset-4 visited:text-indigo-500 hover:underline"
 	>
 		<header class="text-base">{post.title}</header>
@@ -23,9 +23,10 @@
 	<div class="flex items-center justify-end">
 		<a
 			href="/story/{post.id}"
-			data-sveltekit-preload-data="hover"
+			data-sveltekit-preload-data="tap"
 			rel="noopener noreferrer"
-			class="rounded-md p-1 visited:text-indigo-500 hover:bg-neutral hover:text-neutral-content"
+			class="rounded-md p-1 visited:fill-indigo-500
+			hover:bg-neutral hover:text-neutral-content"
 		>
 			<PostStats
 				score={post.score ?? 0}
