@@ -31,6 +31,11 @@ body::-webkit-scrollbar-corner {
 		var(--scrollbar-border-color, rgb(255, 255, 255));
 	border-radius: var(--scrollbar-border-radius, 4px);
 }
+/* text selection colour globally */
+::selection {
+	color: oklch(var(--nc));
+	background: oklch(var(--n));
+}
 
 @layer base {
 	@font-face {
