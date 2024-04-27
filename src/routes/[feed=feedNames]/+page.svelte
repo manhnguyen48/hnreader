@@ -66,9 +66,7 @@
 <svelte:head>
 	<title>{capitalise($page.params.feed)} HN Stories</title>
 </svelte:head>
-<div
-	class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:m-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-9"
->
+<div class="m-2 mb-16 grid gap-2 sm:grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
 	{#each posts as post (post.id)}
 		<Post {post}></Post>
 	{/each}
