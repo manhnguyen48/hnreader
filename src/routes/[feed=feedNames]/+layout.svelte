@@ -8,7 +8,7 @@
 	<div class="sticky bottom-0 z-[1] min-h-fit flex-1 backdrop-blur-md md:top-0">
 		<MenuBar />
 	</div>
-	<div class="min-h-screen flex-1 overflow-auto">
+	<div class="min-h-screen flex-1">
 		{#key $page.params}
 			<slot />
 		{/key}
