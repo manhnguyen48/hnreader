@@ -3,7 +3,11 @@
 	import { scale } from 'svelte/transition';
 	import { expoIn, expoOut } from 'svelte/easing';
 	import PostStats from './PostStats.svelte';
-	export let post: HNItem;
+	interface Props {
+		post: HNItem;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <div

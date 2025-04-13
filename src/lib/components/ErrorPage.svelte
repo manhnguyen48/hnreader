@@ -1,6 +1,10 @@
 <script lang="ts">
 	import cryingCat from '$lib/assets/crying-cat.gif';
-	export let errorText: string;
+	interface Props {
+		errorText: string;
+	}
+
+	let { errorText }: Props = $props();
 </script>
 
 <div class="flex h-screen w-full flex-col items-center justify-center gap-2">

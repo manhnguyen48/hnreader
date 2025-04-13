@@ -2,7 +2,11 @@
 	import type { HNItem } from '$lib/types';
 	import { sanitiseHTML } from '$lib/utils';
 	import PostStats from './PostStats.svelte';
-	export let post: HNItem;
+	interface Props {
+		post: HNItem;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <article class="min-w-full rounded-xl border border-neutral p-3 shadow-xl">

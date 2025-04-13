@@ -2,10 +2,19 @@
 	import { ArrowUp, MessageSquare, Clock } from 'lucide-svelte';
 	import { timeDifference } from '$lib/utils';
 
-	export let score: number;
-	export let descendants: null | number;
-	export let time: number;
-	export let by: null | string = null;
+	interface Props {
+		score: number;
+		descendants: null | number;
+		time: number;
+		by?: null | string;
+	}
+
+	let {
+		score,
+		descendants,
+		time,
+		by = null
+	}: Props = $props();
 </script>
 
 <div class="flex items-center gap-3 font-mono text-xs font-light">

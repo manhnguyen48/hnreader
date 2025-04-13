@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Comment from './Comment.svelte';
 	import type { HNItem } from '$lib/types';
 	import { timeDifference } from '$lib/utils';
 	import { sanitiseHTML } from '$lib/utils';
@@ -6,10 +7,14 @@
 	import { slide } from 'svelte/transition';
 	import { getComments } from '$lib/db';
 	import { ChevronsDown, ChevronsUp } from 'lucide-svelte';
-	export let comment: HNItem;
-	export let offset: number = 0;
+	interface Props {
+		comment: HNItem;
+		offset?: number;
+	}
 
-	let childComments: [] | HNItem[] = [];
+	let { comment, offset = 0 }: Props = $props();
+
+	let childComments: [] | HNItem[] = $state([]);
 	async function getChildComments() {
 		childComments = await getComments(comment.kids ? comment.kids : []);
 	}
@@ -42,14 +47,14 @@
 		{#if childComments.length === 0}
 			<button
 				class="btn btn-sm ml-4 mt-4 flex items-center rounded-xl font-normal"
-				on:click={getChildComments}
+				onclick={getChildComments}
 			>
 				<ChevronsDown size="16px" />
 				{comment.kids.length}
 				more repl{comment.kids.length > 1 ? 'ies' : 'y'}
 			</button>
 		{:else}
-			<button class="btn btn-sm ml-4 mt-4 rounded-xl font-normal" on:click={collapse}>
+			<button class="btn btn-sm ml-4 mt-4 rounded-xl font-normal" onclick={collapse}>
 				<ChevronsUp size="16px" />
 				Collapse</button
 			>
@@ -58,7 +63,7 @@
 	{#if childComments}
 		<div id="child-comments">
 			{#each childComments as childComment}
-				<svelte:self comment={childComment} offset={offset + 20}></svelte:self>
+				<Comment comment={childComment} offset={offset + 20}></Comment>
 			{/each}
 		</div>
 	{/if}

@@ -3,7 +3,11 @@
 	import Post from '$lib/components/Post.svelte';
 	import ErrorPage from '$lib/components/ErrorPage.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>

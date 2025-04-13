@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	const feeds: string[] = ['new', 'best', 'top', 'show', 'ask'];
 	import { navShortcut } from '$lib/shortcuts';
 </script>
 
-<svelte:window on:keydown={navShortcut} />
+<svelte:window onkeydown={navShortcut} />
 <ul class="menu menu-horizontal flex justify-evenly md:justify-center">
 	{#each feeds as feedName}
 		<li>
 			<a
 				href="/{feedName}"
-				class="rounded-xl {$page.url.pathname === `/${feedName}`
+				class="rounded-xl {page.url.pathname === `/${feedName}`
 					? 'active font-medium'
 					: 'font-light'}"
 			>

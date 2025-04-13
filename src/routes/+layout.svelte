@@ -5,9 +5,14 @@
 	import ScrollTop from '$lib/components/ScrollTop.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { Search } from 'lucide-svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { searchPageShortcut } from '$lib/shortcuts';
 	import { onMount } from 'svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	async function detectSWUpdate() {
 		const registration = await navigator.serviceWorker.ready;
@@ -28,9 +33,9 @@
 	onMount(() => detectSWUpdate());
 </script>
 
-<svelte:window on:keydown={searchPageShortcut} />
+<svelte:window onkeydown={searchPageShortcut} />
 <svelte:head>
-	<meta property="og:url" content={$page.url.origin + $page.url.pathname} />
+	<meta property="og:url" content={page.url.origin + page.url.pathname} />
 </svelte:head>
 <nav class="navbar justify-between bg-base-100 text-base-content">
 	<h1
@@ -39,7 +44,7 @@
 		<a href="/">HackerNews</a>
 	</h1>
 	<div>
-		{#if $page.url.pathname !== '/search'}
+		{#if page.url.pathname !== '/search'}
 			<a
 				href="/search"
 				rel="noopenner noreferrer"
@@ -54,7 +59,7 @@
 </nav>
 
 <main class="min-h-screen">
-	<slot />
+	{@render children?.()}
 	<ScrollTop />
 </main>
 <Footer />

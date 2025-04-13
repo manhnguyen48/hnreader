@@ -2,7 +2,11 @@
 	import PostDetail from '$lib/components/PostDetail.svelte';
 	import Comment from '$lib/components/Comment.svelte';
 	import type { PageData } from './$types';
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>

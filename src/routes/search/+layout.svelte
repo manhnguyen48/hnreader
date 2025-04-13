@@ -1,5 +1,10 @@
 <script lang="ts">
 	import { timeOptions, numberResults } from '$lib/types';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 	// Debounce the input by 500ms
 	let timeout: number | undefined;
 	/**
@@ -25,7 +30,7 @@
 		data-sveltekit-keepfocus
 		data-sveltekit-replacestate
 	>
-		<!-- svelte-ignore a11y-autofocus -->
+		<!-- svelte-ignore a11y_autofocus -->
 		<input
 			type="search"
 			aria-label="search box"
@@ -34,7 +39,7 @@
 			name="q"
 			placeholder="Search HackerNews"
 			class="input input-bordered w-full rounded-2xl focus:outline-none"
-			on:input={handleSearch}
+			oninput={handleSearch}
 			autofocus
 		/>
 		<!-- Select the time frame to filter results -->
@@ -43,7 +48,7 @@
 			id="time-frame"
 			aria-label="time frame"
 			class="select select-ghost select-sm rounded-2xl capitalize focus:outline-none"
-			on:input={handleSearch}
+			oninput={handleSearch}
 		>
 			{#each timeOptions as timeOption}
 				{#if timeOption === 'Past Month'}
@@ -59,7 +64,7 @@
 			id="size"
 			aria-label="page size"
 			class="select select-ghost select-sm rounded-2xl focus:outline-none"
-			on:input={handleSearch}
+			oninput={handleSearch}
 		>
 			{#each numberResults as size}
 				{#if size === 30}
@@ -72,4 +77,4 @@
 	</form>
 </div>
 
-<slot />
+{@render children?.()}
