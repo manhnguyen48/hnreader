@@ -5,7 +5,7 @@
 </script>
 
 <svelte:window onkeydown={navShortcut} />
-<ul class="menu menu-horizontal flex justify-evenly md:justify-center">
+<ul class="menu menu-horizontal">
 	{#each feeds as feedName}
 		<li>
 			<a
