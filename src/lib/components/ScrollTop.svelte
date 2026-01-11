@@ -32,7 +32,7 @@
 </script>
 
 <button
-	class="btn btn-square fixed bottom-28 right-4 items-center justify-center rounded-lg"
+	class="btn btn-square fixed right-4 bottom-28 items-center justify-center rounded-lg"
 	aria-label="Scroll To Top"
 	onclick={scrollToTop}
 	style="display: {showButton ? 'flex' : 'none'}"

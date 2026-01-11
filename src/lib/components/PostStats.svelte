@@ -9,17 +9,12 @@
 		by?: null | string;
 	}
 
-	let {
-		score,
-		descendants,
-		time,
-		by = null
-	}: Props = $props();
+	let { score, descendants, time, by = null }: Props = $props();
 </script>
 
 <div class="flex items-center gap-3 font-mono text-xs font-light">
 	{#if by}
-		<span class="flex items-center rounded-md bg-neutral p-1 text-neutral-content">{by}</span>
+		<span class="bg-neutral text-neutral-content flex items-center rounded-md p-1">{by}</span>
 		<span>&#183</span>
 	{/if}
 	<span class="flex items-center gap-0.5"><ArrowUp size="14" strokeWidth="2" /> {score}</span>

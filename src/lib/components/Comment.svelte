@@ -25,20 +25,20 @@
 
 <div class="my-2 flex-auto">
 	<article
-		class="flex flex-col gap-2 border border-transparent border-l-neutral px-2"
+		class="border-l-neutral flex flex-col gap-2 border border-transparent px-2"
 		style="margin-left: {offset}px"
 		in:slide={{ duration: 100, easing: cubicOut }}
 		out:slide={{ duration: 100, easing: cubicIn }}
 	>
 		{#if comment && comment.text}
 			<div
-				class="flex w-fit gap-1 rounded-md bg-neutral p-1 font-mono text-xs text-neutral-content"
+				class="bg-neutral text-neutral-content flex w-fit gap-1 rounded-md p-1 font-mono text-xs"
 			>
 				<span>{comment.by}</span>
 				<span>&#183</span>
 				<span>{comment.time ? timeDifference(comment.time) : ''} ago</span>
 			</div>
-			<div class="prose prose-base text-wrap break-words">
+			<div class="prose prose-base text-wrap wrap-break-words">
 				{@html sanitiseHTML(comment.text)}
 			</div>
 		{/if}
@@ -46,7 +46,7 @@
 	{#if comment.kids}
 		{#if childComments.length === 0}
 			<button
-				class="btn btn-sm ml-4 mt-4 flex items-center rounded-xl font-normal"
+				class="btn btn-sm mt-4 ml-4 flex items-center rounded-xl font-normal"
 				onclick={getChildComments}
 			>
 				<ChevronsDown size="16px" />
@@ -54,7 +54,7 @@
 				more repl{comment.kids.length > 1 ? 'ies' : 'y'}
 			</button>
 		{:else}
-			<button class="btn btn-sm ml-4 mt-4 rounded-xl font-normal" onclick={collapse}>
+			<button class="btn btn-sm mt-4 ml-4 rounded-xl font-normal" onclick={collapse}>
 				<ChevronsUp size="16px" />
 				Collapse</button
 			>

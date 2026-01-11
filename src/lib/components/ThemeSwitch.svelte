@@ -28,7 +28,7 @@
 	$effect(() => {
 		// This code runs after the component mounts and whenever 'theme' changes.
 		// It's guaranteed to run client-side where 'document' is available.
-        if (!browser) return; // Extra safety, though $effect runs client-side
+		if (!browser) return; // Extra safety, though $effect runs client-side
 
 		// Update the theme cookie
 		document.cookie = `theme=${theme}; max-age=${60 * 60 * 24 * 365}; SameSite=Strict; Path=/`; // 1 year expiry
@@ -42,9 +42,8 @@
 		// Uses your theme colors: #000000 for dark, #ece3ca for light
 		metaThemecolor?.setAttribute('content', theme ? '#000000' : '#ece3ca');
 
-        // Note: No need to return an unsubscribe function, $effect handles cleanup.
+		// Note: No need to return an unsubscribe function, $effect handles cleanup.
 	});
-
 </script>
 
 <label class="swap swap-rotate mr-2">
@@ -54,7 +53,7 @@
 		id="theme-switch"
 		class="theme-controller"
 		aria-label="Theme switch"
-		bind:checked={theme} 
+		bind:checked={theme}
 	/>
 	<Sun size="20" class="swap-on" />
 	<Moon size="20" class="swap-off" />

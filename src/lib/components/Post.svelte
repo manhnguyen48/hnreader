@@ -29,8 +29,8 @@
 			href="/story/{post.id}"
 			data-sveltekit-preload-data="tap"
 			rel="noopener noreferrer"
-			class="rounded-md p-1 visited:text-indigo-500
-			hover:bg-neutral hover:text-neutral-content"
+			class="hover:bg-neutral hover:text-neutral-content rounded-md
+			p-1 visited:text-indigo-500"
 		>
 			<PostStats
 				score={post.score ?? 0}
