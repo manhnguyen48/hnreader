@@ -3,9 +3,9 @@
 	import { timeDifference } from '$lib/utils';
 
 	interface Props {
-		score: number;
-		descendants: null | number;
-		time: number;
+		score: number | undefined;
+		descendants: number | null | undefined;
+		time: number | undefined;
 		by?: null | string;
 	}
 
@@ -21,7 +21,9 @@
 	<span class="flex items-center gap-0.5"
 		><MessageSquare size="14" strokeWidth="2" /> {descendants ?? 0}</span
 	>
-	<span class="flex items-center gap-0.5"
-		><Clock size="14" strokeWidth="2" /> {timeDifference(time)}</span
+	<span class="flex items-center gap-0.5">
+		{#if time}
+		<Clock size="14" strokeWidth="2" /> {timeDifference(time)}
+		{/if}</span
 	>
 </div>
