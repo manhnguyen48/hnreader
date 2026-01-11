@@ -9,7 +9,7 @@
 	let { post }: Props = $props();
 </script>
 
-<article class="min-w-full rounded-xl border border-neutral p-3 shadow-xl">
+<article class="border-neutral min-w-full rounded-xl border p-3 shadow-xl">
 	<header class="flex flex-col gap-1">
 		<div class="flex w-full flex-col items-start justify-between gap-2 md:flex-row md:gap-44">
 			<a
@@ -18,7 +18,7 @@
 				rel="noopener noreferrer"
 				class="underline-offset-4 visited:text-indigo-400 hover:underline"
 			>
-				<h1 class="text-wrap text-xl">{post.title}</h1>
+				<h1 class="text-xl text-wrap">{post.title}</h1>
 				<span class="text-xs font-light">
 					{post.url ? `(${new URL(post.url).hostname})` : ''}
 				</span>
@@ -30,7 +30,7 @@
 		<details class="mt-4">
 			<summary class="btn btn-sm cursor-pointer font-normal"> Details </summary>
 			<p
-				class="prose prose-base my-2 border border-transparent border-t-neutral py-2 xl:min-w-[120ch]"
+				class="prose prose-base border-t-neutral my-2 border border-transparent py-2 xl:min-w-[120ch]"
 			>
 				{@html sanitiseHTML(post.text)}
 			</p>

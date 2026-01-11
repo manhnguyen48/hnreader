@@ -37,9 +37,9 @@
 <svelte:head>
 	<meta property="og:url" content={page.url.origin + page.url.pathname} />
 </svelte:head>
-<nav class="navbar justify-between bg-base-100 text-base-content">
+<nav class="navbar bg-base-100 text-base-content justify-between">
 	<h1
-		class="mx-0.5 bg-gradient-to-br from-red-500 to-yellow-500 box-decoration-clone bg-clip-text font-mono text-3xl text-transparent md:text-5xl"
+		class="mx-0.5 bg-linear-to-br from-red-500 to-yellow-500 box-decoration-clone bg-clip-text font-mono text-3xl text-transparent md:text-5xl"
 	>
 		<a href="/">HackerNews</a>
 	</h1>
