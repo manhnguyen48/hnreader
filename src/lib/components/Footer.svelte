@@ -1,9 +1,5 @@
-<script lang="ts">
-	import { Linkedin, Github, Twitter } from 'lucide-svelte';
-</script>
-
 <footer
-	class="footer top-3/4 flex h-12 items-center justify-between bg-base-200 px-4 py-2 text-base-content"
+	class="footer bg-base-200 text-base-content top-3/4 flex h-12 items-center justify-between px-4 py-2"
 >
 	<span class="tooltip" data-tip="Fet per Ethan Nguyen">
 		<p class="text-base">Made by Ethan Nguyen</p>
@@ -15,7 +11,7 @@
 			aria-label="GitHub"
 			rel="noopener noreferrer"
 		>
-			<Github strokeWidth="1.5" /></a
+			Github</a
 		>
 		<a
 			href="https://www.linkedin.com/in/ethannguyen48/"
@@ -23,7 +19,7 @@
 			aria-label="LinkedIn"
 			rel="noopener noreferrer"
 		>
-			<Linkedin strokeWidth="1.5" /></a
+			LinkedIn</a
 		>
 		<a
 			href="https://twitter.com/bananadata48"
@@ -31,7 +27,7 @@
 			aria-label="Twitter"
 			rel="noopener noreferrer"
 		>
-			<Twitter strokeWidth="1.5" /></a
+			Twitter</a
 		>
 	</span>
 </footer>
