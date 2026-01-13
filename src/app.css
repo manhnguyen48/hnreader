@@ -67,7 +67,7 @@ body::-webkit-scrollbar-corner {
 		gap: 0.375rem;
 		overflow: auto;
 		overflow-wrap: break-word;
-		border: 1px solid var(--color-neutral-600);
+		border: 1px solid var(--color-accent);
 		border-radius: 1rem;
 		padding: 0.5rem;
 		box-shadow:
